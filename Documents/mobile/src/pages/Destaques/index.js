@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { View, FlatList, Text, TouchableOpacity, Linking, StatusBar, Dimensions, } from 'react-native';
+import { View, FlatList, Image, Text, TouchableOpacity, Button, Linking, StatusBar, Dimensions, ImageBackground, Html  } from 'react-native';
 import {Feather, FontAwesome, MaterialCommunityIcons} from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api'
@@ -8,7 +8,7 @@ import {Card} from 'react-native-paper';
 import { RFPercentage } from "react-native-responsive-fontsize"; 
 import {useFonts} from '@use-expo/font';
 import { AppLoading } from 'expo';
-import { ImageBackground } from 'react-native';
+//import { ImageBackground } from 'react-native';
 import Constants from 'expo-constants'
 import Propaganda from './propaganda';
 
@@ -98,42 +98,34 @@ function sendGoogleMaps(coordenadas) {
 
     return (
         
+      <ImageBackground  
+               style={{width: Dimensions.get('window').width, 
+                       height: Dimensions.get('window').height}}
+               source={require('../../../assets/final.jpg')}>
 
       
         <View style={styles.container}>
           
+        <View>
+<StatusBar backgroundColor="#0A1F30" barStyle="Dark-content" ></StatusBar>
+</View>
+
+
+
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.openDrawer()} > 
+          <Feather name={'list'} size={38} color='#FCAD02' styles={{alignItems: 'center'}}/>
          
-
-
-
-           <ImageBackground  
-               style={{width: Dimensions.get('window').width, 
-                       height: Dimensions.get('window').height * 0.183,
-                       marginLeft: - Constants.statusBarHeight * 0.4,
-                       
-                                  }} 
-                source={require('../../../assets/principalC.png')}
-                                   >
-                       
-
-                         <TouchableOpacity
-                             style={{marginTop: - Constants.statusBarHeight*0.75,
-                                     marginLeft: Constants.statusBarHeight * 0.53,
-                                     flex: 1,
-                                     flexDirection: "column",
-                                     //alignItems: "flex-start",
-                                     justifyContent: "space-around"}} 
-                             onPress={() => navigation.openDrawer()} > 
-                           <Feather name={'list'} size={RFPercentage(5)} color='#FCAD02'/>
-
-                         </TouchableOpacity>
-                      
-            </ImageBackground>
+          </TouchableOpacity>
+          <Image style={{width: Dimensions.get('window').width*0.2, 
+                       height: Dimensions.get('window').width*0.2,
+                       marginLeft: Dimensions.get('window').width*0.28
+                        }}
+               source={require('../../../assets/icon.png')}></Image>
+          </View>
          
                                   
-        <View>
-<StatusBar backgroundColor="#0A1F30" barStyle="light-content" ></StatusBar>
-</View>
+       
 
  <View style={{width: Dimensions.get('window').width, 
                height: Dimensions.get('window').height * 0.183,
@@ -171,8 +163,8 @@ function sendGoogleMaps(coordenadas) {
                                         justifyContent: 'flex-start',
                                         alignItems: 'center',
                                         flex:1}}>
-                            <Text style={styles.incidentsValue}>{incident.name}</Text>
-                            <Text style={styles.incidentsProperty}>{incident.centrolojistico}</Text>
+                            <Text numberOfLines={1} style={styles.incidentsValue}>{incident.name}</Text>
+                            <Text numberOfLines={1} style={styles.incidentsProperty}>{incident.grupo}-{incident.centrolojistico}</Text>
                             
                           
                             
@@ -210,7 +202,7 @@ function sendGoogleMaps(coordenadas) {
              
         </View>
 
-
+</ImageBackground>
 
 
 

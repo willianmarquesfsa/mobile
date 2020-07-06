@@ -35,7 +35,7 @@ export default StyleSheet.create({
     },
 
     headerText: {
-        fontSize: RFValue(11, 580),
+        fontSize: RFPercentage(2.3),
         color: '#FCAD02',
         fontFamily: 'Inter-BlackC'
         
@@ -44,7 +44,7 @@ export default StyleSheet.create({
     
 
     title:{
-        fontSize: RFValue(24, 580),
+        fontSize: RFPercentage(2.5),
          
          paddingHorizontal: 45,
          color: '#FCAD02',
@@ -56,7 +56,7 @@ export default StyleSheet.create({
     },
 
     description: {
-        fontSize: RFValue(11, 580),
+        fontSize: RFPercentage(2),
         lineHeight: 18,
         color: '#2B2B2B',
        
@@ -100,13 +100,16 @@ export default StyleSheet.create({
     },
     
     incidentsProperty:{
-        fontSize: RFValue(12, 580),
+        fontSize: RFPercentage(1.85),
         color: '#0B2031',
         //color: '#41414d',
         //fontWeight: 'bold',
         padding: Constants.statusBarHeight,
         marginTop: -Constants.statusBarHeight,
-        fontFamily: 'Inter-BlackC'
+        fontFamily: 'Inter-BlackC',
+        
+
+       
     },
 
     incidentsValue: {
@@ -116,8 +119,10 @@ export default StyleSheet.create({
         alignItems: 'center',
         padding: Constants.statusBarHeight*0.5,
         marginTop: -Constants.statusBarHeight,
-        fontSize: RFValue(14, 580),
-        fontFamily: 'Inter-Black'
+        fontSize: RFPercentage(2.3),
+        fontFamily: 'Inter-Black',
+        
+        
 
                
     },
@@ -136,7 +141,7 @@ export default StyleSheet.create({
 
     headerTextBold : {
         marginTop: 7,
-        fontSize: RFValue(13, 580),
+        fontSize: RFPercentage(2.3),
         fontFamily: 'Inter-Black',
         color: '#FCAD02'
     },
@@ -172,7 +177,7 @@ action3: {
 },
 
 centrolojistico: {
-    fontSize: 20, 
+    fontSize: RFPercentage(2), 
     fontWeight: 'bold'
 },
 

@@ -16,8 +16,9 @@ export default StyleSheet.create({
     
     container: {
         flex: 1,
-        paddingHorizontal: Constants.statusBarHeight * 0.4,
-        //paddingTop: Constants.statusBarHeight,
+        paddingHorizontal: Constants.statusBarHeight * 0.5,
+        paddingTop: Constants.statusBarHeight,
+        justifyContent: "center"
         
         //backgroundColor: '#0A1F30'
         
@@ -26,7 +27,10 @@ export default StyleSheet.create({
 
     header: {
        
-       
+        marginTop: - Constants.statusBarHeight*0.35,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
          
         
 
@@ -63,7 +67,9 @@ export default StyleSheet.create({
     },
 
     incidentsList: {
-        marginTop: 1,
+        marginTop: Constants.statusBarHeight * 0.13,
+        margin: - Constants.statusBarHeight * 0.13,
+        marginRight: - Constants.statusBarHeight * 0.3
 
         
         
@@ -83,16 +89,16 @@ export default StyleSheet.create({
 
 
     incidentsList3: {
-        marginTop: Constants.statusBarHeight * 0.25,
-        margin: Constants.statusBarHeight * 0.25,
+        marginTop: Constants.statusBarHeight * 0.265,
+        margin: Constants.statusBarHeight * 0.13,
         
         backgroundColor: '#FFF',
-        paddingVertical: Constants.statusBarHeight * 0.25,
+        paddingVertical: Constants.statusBarHeight * 0.15,
         //padding: 5,
-        paddingHorizontal: Constants.statusBarHeight * 0.2,
+        //paddingHorizontal: Constants.statusBarHeight * 0.1,
         flex: 1/2,
         //flexDirection: 'row',
-        //justifyContent: 'space-between',
+        justifyContent: 'space-between',
         //alignItems: 'center',
         
     borderWidth: 1,

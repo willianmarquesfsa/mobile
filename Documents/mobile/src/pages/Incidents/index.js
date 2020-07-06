@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import { View, FlatList, Image, Text, TouchableOpacity, Button, Linking, StatusBar, Dimensions, ImageBackground } from 'react-native';
+import { View, FlatList, Image, Text, TouchableOpacity, Button, Linking, StatusBar, Dimensions, ImageBackground, Html } from 'react-native';
 import {Feather, FontAwesome, MaterialCommunityIcons} from '@expo/vector-icons';
 import { useNavigation, DrawerActions, useRoute } from '@react-navigation/native';
 import api from '../../services/api'
@@ -20,6 +20,19 @@ import Constants from 'expo-constants'
 
 
 export default function Incidents(x, segun) {
+
+
+
+  function tested(xxx){
+              
+    const response = String(xxx)
+    const decoded = response
+    .replace(/\\u(....)/g, (match, p1) => String.fromCharCode(parseInt(p1, 16)))
+    .replace(/\\n/g, (match, p1) => String.fromCharCode(parseInt(p1, 8)))
+    .replace(/\\(\d{3})/g, (match, p1) => String.fromCharCode(parseInt(p1,  8)))
+             
+    return (decoded)
+}
     
     
     const [total, setTotal] = useState(0);
@@ -88,18 +101,18 @@ function catego() {
       tex = 'Centro Comercial:'
   }
   else if (centrolojistico ===  'FeiraPortal') {tex = 'Centro Comercial:';
-                 return (<Text style={styles.headerTextBold}>{tex}<Text style={styles.headerText}> {`${segun}`}</Text></Text>)}
+                 return (<Text style={styles.headerTextBold}>{tex}<Text style={styles.headerTextBold}> {`${segun}`}</Text></Text>)}
    
   else if (centrolojistico ===  "Polimodas") {tex = 'Centro Comercial:';
-                 return (<Text style={styles.headerTextBold}>{tex}<Text style={styles.headerText}> {`${segun}`}</Text></Text>)}
+                 return (<Text style={styles.headerTextBold}>{tex}<Text style={styles.headerTextBold}> {`${segun}`}</Text></Text>)}
   else if (centrolojistico ===  "Centro da Cidade") {tex = 'Centro Comercial:';
-                 return (<Text style={styles.headerTextBold}>{tex}<Text style={styles.headerText}> {`${segun}`}</Text></Text>)}
+                 return (<Text style={styles.headerTextBold}>{tex}<Text style={styles.headerTextBold}> {`${segun}`}</Text></Text>)}
   else if (centrolojistico ===  "Bares e Restudantes") {
                  return (<Text style={styles.headerTextBold}>{`${segun}`}</Text>)}
   else { tex = 'Serviços:';
-                 return (<Text style={styles.headerTextBold}>{tex}<Text style={styles.headerText}> {`${segun}`}</Text></Text>)}
+                 return (<Text style={styles.headerTextBold}>{tex}<Text style={styles.headerTextBold}> {`${segun}`}</Text></Text>)}
   
-  return (<Text style={styles.headerTextBold}>{tex}<Text style={styles.headerText}> {`${segun}`}</Text></Text>)
+  return (<Text style={styles.headerTextBold}>{tex}<Text style={styles.headerTextBold}> {`${segun}`}</Text></Text>)
 }
 //console.log(incidents.name);
 
@@ -145,7 +158,7 @@ const perfil = render();
           </TouchableOpacity>
           <Image style={{width: Dimensions.get('window').width*0.2, 
                        height: Dimensions.get('window').width*0.2,
-                       marginLeft: Dimensions.get('window').width*0.25
+                       marginLeft: Dimensions.get('window').width*0.28
                         }}
                source={require('../../../assets/icon.png')}></Image>
           </View>
@@ -155,7 +168,7 @@ const perfil = render();
              
               <Text>{catego()}</Text>
                
-              <Text style={styles.headerTextBold}>Categoria:<Text style={styles.headerText}> {x}</Text></Text>
+              <Text style={styles.headerText}>Categoria:<Text style={styles.headerTextBold}> {x}</Text></Text>
               
 
              <FlatList
@@ -178,8 +191,8 @@ const perfil = render();
                                         justifyContent: 'flex-start',
                                         alignItems: 'center',
                                         flex:1}}>
-                            <Text style={styles.incidentsValue}>{incident.name}</Text>
-                            <Text style={styles.incidentsProperty}>{incident.description}</Text>
+                            <Text numberOfLines={2} style={styles.incidentsValue}>{incident.title}</Text>
+                            <Text numberOfLines={3} ellipsizeMode='tail' style={styles.incidentsProperty}>{tested(String(incident.description))}</Text>
                           
                             
                           

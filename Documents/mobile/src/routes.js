@@ -2,7 +2,7 @@ import React  from 'react';
 import logo from './assets/logo.png';
 import {FontAwesome5, MaterialCommunityIcons} from '@expo/vector-icons';
 
- import {Image,  View} from "react-native";
+ import {Image,  View, Linking} from "react-native";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize"; 
 import {NavigationContainer} from '@react-navigation/native'
 import { createStackNavigator} from '@react-navigation/stack';
@@ -29,6 +29,13 @@ import { AppLoading } from 'expo'
 
 
 import { StatusBar } from 'react-native';
+
+function sendWhatsapp() {
+  Linking.openURL(`http://192.168.0.100:3006`);
+};
+
+
+
 class MenuComponent extends React.Component {
   
   
@@ -105,12 +112,12 @@ class MenuComponent extends React.Component {
          
     <ListItem  icon onPress={() => this.props.navigation.navigate('Destaques')}>
     
-    <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >Pagina principal</Text></Body>
+    <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >PÁGINA PRINCIPAL</Text></Body>
   </ListItem>
 
   <ListItem  icon onPress={() => this.setState({ item1: !this.state.item1, item2: !this.state.item2, item3: !this.state.item3  })}>
     
-    <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >Centros Comerciais</Text></Body>
+    <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >CENTROS COMERCIAIS</Text></Body>
   </ListItem>
 
   
@@ -271,7 +278,7 @@ class MenuComponent extends React.Component {
 
     <ListItem  icon onPress={() => this.setState({ item4: !this.state.item4  })}>
     
-    <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >Serviços</Text></Body>
+    <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >SERVIÇOS</Text></Body>
   </ListItem>
 
     <ListItem icon onPress={() => this.setState({ item5: !this.state.item5 })}>
@@ -520,7 +527,12 @@ class MenuComponent extends React.Component {
 
              <ListItem  icon onPress={() => this.props.navigation.navigate('Bares e Restudantes')}>
     
-    <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >Bares e Restaurantes</Text></Body>
+    <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >BARES E RESTAURANTES</Text></Body>
+  </ListItem>
+
+  <ListItem  icon onPress={() => sendWhatsapp()}>
+    
+    <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >CADASTRO</Text></Body>
   </ListItem>
 
     
@@ -839,7 +851,7 @@ function MyDrawer() {
   initialRouteName={Destaques}
   drawerContent={props => <MenuComponent {...props}  />}
   drawerType={'slide'} 
-  drawerStyle={{width: '60%'}}>
+  drawerStyle={{width: '86%'}}>
      
      <Drawer.Screen name="Destaques" component={Destaquess}/>  
 
