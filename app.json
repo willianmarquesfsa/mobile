@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "ClassificadosFSA",
+    
+    "slug": "mobile",
+    "privacy": "public",
+    "androidStatusBar": {
+      "hideStatusBar": false
+    },
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "2.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#fff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.classificadosfsa.willianmarques", 
+      "supportsTablet": true,
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-4742876649235540~8915256470"
+      }
+    },
+    "android": {
+      "versionCode": 2,
+      "package": "com.classificadosfsa.willianmarques",
+      "permissions": ["ACCESS_COARSE_LOCATION ", "ACCESS_FINE_LOCATION "],
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-4742876649235540~3943799699"
+      }
+    }
+    
+    
+
+
+    
+  }
+}
