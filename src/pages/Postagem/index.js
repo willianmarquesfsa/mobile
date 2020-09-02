@@ -130,7 +130,7 @@ acultbo = () => {
     
     
   return <TouchableOpacity onPress={() => this.props.navigation.navigate('Newpost')} > 
-  <Ionicons name="ios-add-circle" size={windowHeight*0.045} color='#203242' />
+  <Ionicons name="ios-add-circle" size={windowWidth*0.08} color='#203242' />
 
 </TouchableOpacity>
   }
@@ -139,7 +139,7 @@ acultbo = () => {
     
     
     return (<TouchableOpacity onPress={() => Alert.alert("Olá", "Para editar, apague o post atual e refaça na localização de sua empresa")} > 
-    <Entypo name="edit" size={windowHeight*0.04} color='#203242' />
+    <Entypo name="edit" size={windowWidth*0.08} color='#203242' />
   
   </TouchableOpacity>)
   }
@@ -274,7 +274,7 @@ sendGoogleMaps(coordenadas) {
 
 <View style={styles.header} >
           <TouchableOpacity onPress={() => this.props.navigation.openDrawer()} > 
-          <Feather name={'list'} size={windowHeight*0.045} color='#203242' styles={{alignItems: 'center'}}/>
+          <Feather name={'list'} size={windowWidth*0.08} color='#203242' styles={{alignItems: 'center'}}/>
          
           </TouchableOpacity>
             <Image style={{height: windowHeight*0.11, width: windowWidth*0.2, }}
@@ -307,7 +307,7 @@ sendGoogleMaps(coordenadas) {
                     source={{uri: `${todo.instagram}`}}/>
             <Text style={styles.title}>{todo.title}</Text>
             <TouchableOpacity>
-            <AntDesign name="delete" size={24} color="black" onPress={this.deletepost} />
+            <AntDesign name="delete" size={windowWidth*0.045} color="black" onPress={this.deletepost} />
             </TouchableOpacity>
             </View>
             <Text style={styles.description1}>Descrição:</Text>

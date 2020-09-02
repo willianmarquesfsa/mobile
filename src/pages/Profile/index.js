@@ -527,7 +527,7 @@ export default class Profile extends React.Component {
           
           <View style={{justifyContent: 'flex-start' , alignItems: "center", flexDirection: 'row', width: windowWidth}}>
           <TouchableOpacity onPress={() => this.props.navigation.openDrawer()} > 
-          <Feather name={'list'} size={windowHeight*0.045} color='#203242' styles={{alignItems: 'center'}}/>
+          <Feather name={'list'} size={windowWidth*0.08} color='#203242' styles={{alignItems: 'center'}}/>
          
           </TouchableOpacity>
             <Image source={require('../../../assets/icon.png')} 

@@ -239,7 +239,7 @@ centrolojistico: {
           },
         instagram3: {
         color: '#FCAD02', 
-                         fontSize: RFPercentage(5/2),  
+                         fontSize: windowWidth*0.045,  
                          fontFamily: 'Inter-Black', 
                          paddingHorizontal: Dimensions.get('window').width*0.03
         },

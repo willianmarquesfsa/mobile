@@ -187,14 +187,14 @@ export default class Incidents extends React.Component {
         
             if (this.props.count == 0) {
                 return ( <TouchableOpacity onPress={() => this.props.navigation.navigate('Logon')} > 
-                <AntDesign name="adduser" size={windowHeight*0.045} color='#203242' />
+                <AntDesign name="adduser" size={windowWidth*0.08} color='#203242' />
          
           </TouchableOpacity>)
             }
         
             if (this.props.count == 1) {
                 return ( <TouchableOpacity onPress={() => this.props.navigation.navigate('Postagem')} > 
-                <Entypo name="add-to-list" size={windowHeight*0.045} color='#203242' />
+                <Entypo name="add-to-list" size={windowWidth*0.08} color='#203242' />
          
           </TouchableOpacity>)
             }
@@ -221,7 +221,7 @@ export default class Incidents extends React.Component {
         </View>
                   <View style={styles.header}>
                   <TouchableOpacity onPress={() => this.props.navigation.openDrawer()} > 
-                  <Feather name={'list'} size={windowHeight*0.045} color='#203242' styles={{alignItems: 'center'}}/>
+                  <Feather name={'list'} size={windowWidth*0.08} color='#203242' styles={{alignItems: 'center'}}/>
                  
                   </TouchableOpacity>
                     <Image style={{height: windowHeight*0.12, width: windowWidth*0.19, }}

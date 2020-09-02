@@ -285,7 +285,7 @@ export class Routesff2 extends Component {
   initialRouteName={Desta}
   drawerContent={props => <MenuComponentcopy   {...props}  />}
   drawerType={'slide'} 
-  drawerStyle={{width: '80%'}}>
+  drawerStyle={{width: '75%'}}>
      
      <Drawer.Screen name="Destaques" component={Desta}/>  
 
@@ -393,7 +393,7 @@ export class Routesff extends Component {
   constructor(props) {
     super(props);
     
-    this._loadFontsAsync();
+    
     this.state = {
       
       fontsLoaded: false
@@ -405,6 +405,12 @@ export class Routesff extends Component {
     await Font.loadAsync(customFonts);
     //console.log(this.InputChange()+'qqq')
     this.setState({ fontsLoaded: true });
+  }
+  componentDidMount(){
+    this._loadFontsAsync();
+  }
+  componentWillUnmount(){
+    this._loadFontsAsync()
   }
   
  

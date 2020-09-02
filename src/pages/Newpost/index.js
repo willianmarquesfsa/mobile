@@ -266,7 +266,7 @@ export default class Newpost extends React.Component {
           contentContainerStyle={styles.scrollContentContainer}>
           <View style={{justifyContent: 'flex-start' , alignItems: "center", flexDirection: 'row'}}>
           <TouchableOpacity onPress={() => {this.props.navigation.navigate('Postagem')}} > 
-          <AntDesign name={'back'} size={windowHeight*0.045} color='#203242' styles={{alignItems: 'center'}}/>
+          <AntDesign name={'back'} size={windowWidth*0.08} color='#203242' styles={{alignItems: 'center'}}/>
          
           </TouchableOpacity>
             <Image source={require('../../../assets/icon.png')} 

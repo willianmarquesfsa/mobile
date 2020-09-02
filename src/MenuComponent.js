@@ -1,7 +1,6 @@
 import React  from 'react';
 import {FontAwesome5, } from '@expo/vector-icons';
 import {Image,  View, Linking} from "react-native";
-import { RFPercentage } from "react-native-responsive-fontsize";
 //import { DrawerNavigation} from '@react-navigation';
 import { DrawerContentScrollView} from '@react-navigation/drawer';
 import {Card} from 'react-native-paper';
@@ -18,13 +17,18 @@ import {Rotas,
         ServiçosDiversoss} from './rotas';
 
 import { Container, Header, Body, Text, ListItem, Left, Right, Icon} from 'native-base';
-import { AsyncStorage } from 'react-native';
-import api from './services/api'
+import { AsyncStorage, Dimensions } from 'react-native';
+
 
 import styles from './pages/Incidents/styles'
 function sendWhatsapp() {
   Linking.openURL(`http://acheifsa.com.umbler.net`);
 };
+
+
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 
 
@@ -61,8 +65,7 @@ export default class MenuComponent extends React.Component {
     componentDidMount(){
       
       this._retrieveData()
-      console.log(this.props.count+'agora')
-      console.log(this.props.count2+'2gora')
+      
               
     }
 
@@ -176,10 +179,10 @@ export default class MenuComponent extends React.Component {
         return ( 
         <View>
           <ListItem  icon onPress={() => this.props.navigation.navigate('Profile')}>
-             <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >CADASTRAR NEGÓCIO</Text></Body>
+             <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}} >CADASTRAR NEGÓCIO</Text></Body>
          </ListItem>
          <ListItem   icon onPress={() => this.props.navigation.navigate('Logon')}>
-             <Body  style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >ENTRAR</Text></Body>
+             <Body  style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}} >ENTRAR</Text></Body>
          </ListItem>
        </View> )
        
@@ -190,10 +193,10 @@ export default class MenuComponent extends React.Component {
          return ( 
          <View>
           <ListItem  icon onPress={() => this.props.navigation.navigate('Postagem')}>
-               <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >MEU POST</Text></Body>
+               <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}} >MEU POST</Text></Body>
           </ListItem>
           <ListItem  icon onPress={() => this.handleSignInPress()}>
-               <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >SAIR</Text></Body>
+               <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}} >SAIR</Text></Body>
           </ListItem>
       </View> )
        
@@ -247,12 +250,12 @@ export default class MenuComponent extends React.Component {
         icon11 = 'arrow-up';
       }
       
-      const component = (this.props.count)
+     
       
       return (
       <Container style={{ backgroundColor: '#0A1F30' }}>
         
-        <Header style={{height: RFPercentage(19), backgroundColor: '#203242'}}>
+        <Header style={{height: windowHeight*0.15, backgroundColor: '#203242'}}>
         
         
           {this._listEmptyFoto()}
@@ -262,12 +265,12 @@ export default class MenuComponent extends React.Component {
            
       <ListItem  icon onPress={() => this.props.navigation.navigate('Destaques')}>
       
-      <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >PÁGINA PRINCIPAL</Text></Body>
+      <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}} >PÁGINA PRINCIPAL</Text></Body>
     </ListItem>
   
     <ListItem  icon onPress={() => this.setState({ item1: !this.state.item1, item2: !this.state.item2, item3: !this.state.item3  })}>
       
-      <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >CENTROS COMERCIAIS</Text></Body>
+      <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}} >CENTROS COMERCIAIS</Text></Body>
     </ListItem>
   
     
@@ -275,7 +278,7 @@ export default class MenuComponent extends React.Component {
   
           <ListItem icon onPress={() => this.setState({ item1: !this.state.item1 })}>
             <Left><FontAwesome5 name="layer-group" color={'#FCAD02'}/></Left>
-            <Body><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}}>Feiraguay</Text></Body>
+            <Body><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}}>Feiraguay</Text></Body>
             <Right><Icon name={icon1} style={{color: '#FCAD02'}}/></Right>
           </ListItem>
   
@@ -286,7 +289,7 @@ export default class MenuComponent extends React.Component {
   
           <ListItem icon onPress={() => this.setState({ item2: !this.state.item2 })}>
             <Left><FontAwesome5 name="layer-group" color='#FCAD02'/></Left>
-            <Body><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}}>Feira Portal</Text></Body>
+            <Body><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}}>Feira Portal</Text></Body>
             <Right><Icon name={icon2} style={{color: '#FCAD02'}} /></Right>
             
           </ListItem>
@@ -295,7 +298,7 @@ export default class MenuComponent extends React.Component {
   
           <ListItem icon onPress={() => this.setState({ item3: !this.state.item3 })}>
           <Left><FontAwesome5 name="layer-group" color='#FCAD02'/></Left>
-            <Body><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}}>Polimodas</Text></Body>
+            <Body><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}}>Polimodas</Text></Body>
             <Right><Icon name={icon3} style={{color: '#FCAD02'}}/></Right>
             
           </ListItem>
@@ -305,7 +308,7 @@ export default class MenuComponent extends React.Component {
       ) : null}
       <ListItem icon onPress={() => this.setState({ item11: !this.state.item11 })}>
             <Left><FontAwesome5 name="layer-group" color={'#FCAD02'}/></Left>
-            <Body><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}}>Centro da Cidade</Text></Body>
+            <Body><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}}>Centro da Cidade</Text></Body>
             <Right><Icon name={icon11} style={{color: '#FCAD02'}}/></Right>
           </ListItem>
   
@@ -317,12 +320,12 @@ export default class MenuComponent extends React.Component {
   
       <ListItem  icon onPress={() => this.setState({ item4: !this.state.item4  })}>
       
-      <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >SERVIÇOS</Text></Body>
+      <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}} >SERVIÇOS</Text></Body>
     </ListItem>
   
       <ListItem icon onPress={() => this.setState({ item5: !this.state.item5 })}>
             <Left><FontAwesome5 name="layer-group" color={'#FCAD02'}/></Left>
-            <Body><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}}>Agro e Pets</Text></Body>
+            <Body><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}}>Agro e Pets</Text></Body>
             <Right><Icon name={icon5} style={{color: '#FCAD02'}}/></Right>
           </ListItem>
   
@@ -337,7 +340,7 @@ export default class MenuComponent extends React.Component {
    
                <ListItem icon onPress={() => this.setState({ item6: !this.state.item6 })}>
             <Left><FontAwesome5 name="layer-group" color={'#FCAD02'}/></Left>
-            <Body><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}}>Autos</Text></Body>
+            <Body><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}}>Autos</Text></Body>
             <Right><Icon name={icon6} style={{color: '#FCAD02'}}/></Right>
           </ListItem>
   
@@ -352,7 +355,7 @@ export default class MenuComponent extends React.Component {
   
                <ListItem icon onPress={() => this.setState({ item7: !this.state.item7 })}>
             <Left><FontAwesome5 name="layer-group" color={'#FCAD02'}/></Left>
-            <Body><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}}>Casa e Construção</Text></Body>
+            <Body><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}}>Casa e Construção</Text></Body>
             <Right><Icon name={icon7} style={{color: '#FCAD02'}}/></Right>
           </ListItem>
   
@@ -363,7 +366,7 @@ export default class MenuComponent extends React.Component {
   
                <ListItem icon onPress={() => this.setState({ item8: !this.state.item8 })}>
             <Left><FontAwesome5 name="layer-group" color={'#FCAD02'}/></Left>
-            <Body><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}}>Educação e Treinamentos</Text></Body>
+            <Body><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}}>Educação e Treinamentos</Text></Body>
             <Right><Icon name={icon8} style={{color: '#FCAD02'}}/></Right>
           </ListItem>
   
@@ -377,7 +380,7 @@ export default class MenuComponent extends React.Component {
   
       <ListItem icon onPress={() => this.setState({ item4: !this.state.item4 })}>
             <Left><FontAwesome5 name="layer-group" color={'#FCAD02'}/></Left>
-            <Body><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}}>Manutenção e informática</Text></Body>
+            <Body><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045 , fontFamily: 'Inter-Black'}}>Manutenção e informática</Text></Body>
             <Right><Icon name={icon4} style={{color: '#FCAD02'}}/></Right>
           </ListItem>
   
@@ -389,7 +392,7 @@ export default class MenuComponent extends React.Component {
   
                <ListItem icon onPress={() => this.setState({ item9: !this.state.item9 })}>
             <Left><FontAwesome5 name="layer-group" color={'#FCAD02'}/></Left>
-            <Body><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}}>Saúde e Beleza</Text></Body>
+            <Body><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}}>Saúde e Beleza</Text></Body>
             <Right><Icon name={icon9} style={{color: '#FCAD02'}}/></Right>
           </ListItem>
   
@@ -400,7 +403,7 @@ export default class MenuComponent extends React.Component {
   
                <ListItem icon onPress={() => this.setState({ item10: !this.state.item10 })}>
             <Left><FontAwesome5 name="layer-group" color={'#FCAD02'}/></Left>
-            <Body><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}}>Serviços Diversos</Text></Body>
+            <Body><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}}>Serviços Diversos</Text></Body>
             <Right><Icon name={icon10} style={{color: '#FCAD02'}}/></Right>
           </ListItem>
   
@@ -411,7 +414,7 @@ export default class MenuComponent extends React.Component {
   
                <ListItem  icon onPress={() => this.props.navigation.navigate('Bares e Restudantes')}>
       
-      <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: RFPercentage(5/2), fontFamily: 'Inter-Black'}} >BARES E RESTAURANTES</Text></Body>
+      <Body style={{alignItems: "center"}}><Text style={{color: '#FCAD02', fontSize: windowWidth*0.045, fontFamily: 'Inter-Black'}} >BARES E RESTAURANTES</Text></Body>
     </ListItem>
    
     {this._listEmptyComponent()}

@@ -30,7 +30,7 @@ export default class Destaque extends React.Component {
         super(props)
  
         this.bannerAdId = Platform.OS === "ios" ? "ca-app-pub-4742876649235540/4064903407": "ca-app-pub-4742876649235540/2683523067";
-        this._loadFontsAsync();
+       
         
       this.state = {
          
@@ -51,11 +51,13 @@ export default class Destaque extends React.Component {
 
   componentDidMount(){
         this._retrieveData()
+        this._loadFontsAsync();
         
     }
 
      componentWillUnmount(){
        this._retrieveData()
+       this._loadFontsAsync();
      }
      
       onRefresh() {
@@ -65,16 +67,7 @@ export default class Destaque extends React.Component {
                        loanding: false, },() => {this._retrieveData()});
     }
 
-    tested = (xxx) =>{
-        const response = String(xxx)
-        const decoded = response
-        .replace(/\\u(....)/g, (match, p1) => String.fromCharCode(parseInt(p1, 16)))
-        .replace(/\\n/g, (match, p1) => String.fromCharCode(parseInt(p1, 8)))
-        .replace(/\\(\d{3})/g, (match, p1) => String.fromCharCode(parseInt(p1,  8)))
-                 
-        return (decoded)
-      }
-
+    
       _retrieveData = async () => {
         //console.log(this.state.centrolojistico.length)
 
@@ -125,14 +118,14 @@ export default class Destaque extends React.Component {
     
         if (this.props.count == 0) {
             return ( <TouchableOpacity onPress={() => this.props.navigation.navigate('Logon')} > 
-            <AntDesign name="adduser" size={windowHeight*0.045} color='#203242' />
+            <AntDesign name="adduser" size={windowWidth*0.08} color='#203242' />
      
       </TouchableOpacity>)
         }
     
         if (this.props.count == 1) {
             return ( <TouchableOpacity onPress={() => this.props.navigation.navigate('Postagem')} > 
-            <Entypo name="add-to-list" size={windowHeight*0.045} color='#203242' />
+            <Entypo name="add-to-list" size={windowWidth*0.08} color='#203242' />
      
       </TouchableOpacity>)
         }
@@ -153,7 +146,7 @@ render() {
          </View>
          <View style={styles.header}>
             <TouchableOpacity onPress={() => this.props.navigation.openDrawer()} > 
-               <Feather name={'list'} size={windowHeight*0.045} color='#203242' styles={{alignItems: 'center'}}/>
+               <Feather name={'list'} size={windowWidth*0.08} color='#203242' styles={{alignItems: 'center'}}/>
             </TouchableOpacity>
             <Image style={{height: windowHeight*0.12, width: windowWidth*0.19, }}
                source={require('../../../assets/icon.png')}></Image>
