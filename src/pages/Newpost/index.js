@@ -17,10 +17,10 @@ import RadioForm from 'react-native-simple-radio-button';
 import * as Font from 'expo-font';
 import PropTypes from 'prop-types';
 import { AppLoading } from 'expo';
-import { Dimensions } from 'react-native';
+import { Dimensions, PermissionsAndroid  } from 'react-native';
 import api from '../../services/api';
 import { AdMobRewarded} from 'expo-ads-admob'
-import { getPermissionsAsync } from 'expo-location';
+
 
 
 var radio_props = [
@@ -68,6 +68,25 @@ export default class Newpost extends React.Component {
   }
 
 
+  async verifyLocationPermission() {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+      );
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        console.log('permissão concedida');
+        this.setState({setHasLocationPermission: true})
+      } else {
+        console.error('permissão negada');
+        
+        this.setState({setHasLocationPermission: true})
+        
+      }
+    } catch (err) {
+      console.warn(err);
+    }
+  }
+
   
 
   static propTypes = {
@@ -101,6 +120,11 @@ export default class Newpost extends React.Component {
     google: '',
     fontsLoaded: false,
     isReady: true,
+    hasLocationPermission: false,
+    setHasLocationPermission: false,
+    userPosition: false,
+    setUserPosition: false,
+
      
   };
   //this.InputAccessoryView = this.InputAccessoryView.bind(this);
@@ -108,13 +132,15 @@ export default class Newpost extends React.Component {
 
   componentDidMount(){
     this._loadFontsAsync();
-    this.buscarlocalizacao2()
+    
+    this.verifyLocationPermission()
     
   }
 
   componentWillUnmount(){
     this._loadFontsAsync();
-    this.buscarlocalizacao2()
+    
+    this.verifyLocationPermission()
   }
 
   buscarlocalizacao2 = () => {
