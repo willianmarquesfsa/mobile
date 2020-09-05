@@ -20,7 +20,7 @@ const windowHeight = Dimensions.get('window').height;
 
 
 export default class Destaque extends React.Component {
-    async _loadFontsAsync() {
+    _loadFontsAsync = async () => {
         await Font.loadAsync(customFonts);
         this.setState({ fontsLoaded: true });
           
@@ -96,7 +96,7 @@ export default class Destaque extends React.Component {
             this.setState({loanding: false})
             
       }
-      catch(err) {console.log(err)}
+      catch(err) {console.log(err+'0409')}
         
         setTimeout(() => {
             this.setState({isFetching: false});
@@ -131,6 +131,15 @@ export default class Destaque extends React.Component {
         }
     
     }
+    _listEmptyComponent = () => {
+    
+      return (
+          
+          <Text style={styles.seminternet}>Sem internet!</Text>
+              
+          
+      )
+  }
 
 render() {
    
@@ -166,12 +175,14 @@ render() {
 
      <FlatList
             data={this.state.incidents}
+            ListEmptyComponent={this._listEmptyComponent}
             numColumns={2}
             keyExtractor={incident => String(incident.id)}
             showsVerticalScrollIndicator={false}
             onEndReached={()=>this._retrieveData()}
             onRefresh={()=>this.onRefresh()}
             refreshing={this.state.isFetching}
+            onEndReachedThreshold={0.2}
             extraData={this.state.incidents}
             renderItem={({item: incident})=>(
              

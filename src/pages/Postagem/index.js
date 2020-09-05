@@ -2,7 +2,6 @@ import React from 'react';
 import {
   AsyncStorage,
   Text,
-  ScrollView,
   FlatList,
   StyleSheet,
   Image,
@@ -15,14 +14,10 @@ import {Card} from 'react-native-paper';
 import Constants from 'expo-constants';
 import api from '../../services/api';
 import {Feather, Entypo, Ionicons,  AntDesign, MaterialCommunityIcons, FontAwesome} from '@expo/vector-icons';
-import { Row, Thumbnail } from 'native-base';
-//import { Text } from 'react-native-paper/lib/typescript/src/components/Avatar/Avatar';
 import * as Font from 'expo-font';
 import { AppLoading } from 'expo';
-import { bool } from 'prop-types';
 import { StatusBar, Alert, Dimensions  } from 'react-native';
-//import { Dimensions } from 'react-native';
-import {AdMobBanner, setTestDeviceIDAsync} from 'expo-ads-admob'
+import {AdMobBanner} from 'expo-ads-admob'
   
 let customFonts = {
   'Inter-Black': require('../../assets/fonts/BellotaText-Bold.ttf'),
@@ -116,19 +111,11 @@ mudarhhh = () =>{
     
 }
 
-
-
-
-
-
 acultbo = () => {
 
-  
-
-  if(this.props.count2 == 0) {
+   if(this.props.count2 == 0) {
    
-    
-    
+        
   return <TouchableOpacity onPress={() => this.props.navigation.navigate('Newpost')} > 
   <Ionicons name="ios-add-circle" size={windowWidth*0.08} color='#203242' />
 
@@ -136,8 +123,7 @@ acultbo = () => {
   }
   if (this.props.count2 == 1 ) {
    
-    
-    
+     
     return (<TouchableOpacity onPress={() => Alert.alert("Olá", "Para editar, apague o post atual e refaça na localização de sua empresa")} > 
     <Entypo name="edit" size={windowWidth*0.08} color='#203242' />
   
@@ -145,12 +131,9 @@ acultbo = () => {
   }
 }
   
-
-
   onRefresh = () => {
     this.setState({isFetching: true,},() => {this._retrieveData()});
 }
-
 
   tested = (xxx) =>{
     const response = String(xxx)
@@ -169,8 +152,6 @@ acultbo = () => {
     else return "Sim"
   }
 
-
-
    deletepost = async () => {
      try{
       await api.delete( `incidents/${this.state.idp}`,{
@@ -182,13 +163,13 @@ acultbo = () => {
     this.props.dispatch({ type: 'DECREMENT2' })
     console.log('OK')
     this.setState({todos: []})
-    //this.props.navigation.navigate('Newpost')
+    
      }
      catch(error) {
          console.log(error)
      }
    }
-//sdsd
+
 
 sendIstagram(instagram) {
   Linking.openURL(`${instagram}`);
@@ -199,24 +180,14 @@ sendGoogleMaps(coordenadas) {
   
 };
 
-
    _retrieveData = async () => {
-    //this.setState({mudar: false})
-    //console.log(this.state.mudar)
-
-    
-    
+       
     try {
       const value = await AsyncStorage.getItem('ongId');
       const value2 = await AsyncStorage.getItem('ongName');
       if (value !== null) {
-        // We have data!!
-        //console.log(value);
-        this.setState({ id: value})
-        
-        //console.log(this.state.id)
-        //console.log(value)
-
+         this.setState({ id: value})
+    
         await api.get('profile', {
           headers: {
             Authorization: `${this.state.id}`,   
@@ -226,20 +197,16 @@ sendGoogleMaps(coordenadas) {
                  this.setState({todos: response.data})
                  this.setState({username: value2})
                  this.setState({idp: ggg.id})
-
-                 //console.log('willianc')
                  this.setState({mudar: true})
-                 //console.log(this.state.mudar)
                  this.setState({ isFetching: false })
-               //console.log(this.state.todos.length)
+              
                this.props.dispatch({ type: 'INCREMENT2' })
            })
 
       }
 
-      //console.log(this.state.todos.length)
-    } catch (error) {
-      // Error retrieving data
+      } catch (error) {
+     
     }
 
     setTimeout(() => {
@@ -251,19 +218,12 @@ sendGoogleMaps(coordenadas) {
 
   
   render() {
-   /* let font2 = useFonts({
-      'Inter-Black': require('../../assets/fonts/BellotaText-Bold.ttf'),
-      'Inter-BlackC': require('../../assets/fonts/BellotaText-Regular.ttf'),
-    });
-    //console.log(font2)
-*/
-    if (!this.state.fontsLoaded) {
+     if (!this.state.fontsLoaded) {
       return <AppLoading />;
     }
-      //if()
+   
     else {
   
-
     return (
       <View style={{flex:1,paddingHorizontal: Dimensions.get('window').width*0.015,
       paddingTop: Constants.statusBarHeight, height: windowHeight}}>
@@ -272,7 +232,7 @@ sendGoogleMaps(coordenadas) {
         <StatusBar backgroundColor="#203242" barStyle="Dark-content" ></StatusBar>
         </View>
 
-<View style={styles.header} >
+     <View style={styles.header} >
           <TouchableOpacity onPress={() => this.props.navigation.openDrawer()} > 
           <Feather name={'list'} size={windowWidth*0.08} color='#203242' styles={{alignItems: 'center'}}/>
          
@@ -294,9 +254,7 @@ sendGoogleMaps(coordenadas) {
           refreshing={this.state.isFetching}
           
           renderItem={({item: todo})=>(
-            
-            
-            
+                   
 
             <View style={styles.body2}>
             <View style={styles.body}>

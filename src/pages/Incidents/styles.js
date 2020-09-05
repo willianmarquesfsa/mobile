@@ -25,6 +25,16 @@ export default StyleSheet.create({
         
 
     },
+    seminternet:{
+        fontSize: Dimensions.get('window').width*0.06,
+        color: '#1D2B44',
+        marginLeft: Dimensions.get('window').width*0.3,
+       justifyContent: 'center',
+        fontFamily: 'Inter-Black',
+        alignItems: "center",
+        justifyContent: 'center',
+        alignContent: 'center'
+    },
 
     header: {
         marginTop: - Constants.statusBarHeight*0.35,

@@ -140,6 +140,17 @@ export default StyleSheet.create({
         alignItems: "center",
     },
 
+    seminternet:{
+        fontSize: Dimensions.get('window').width*0.06,
+        color: '#1D2B44',
+        marginLeft: Dimensions.get('window').width*0.3,
+       justifyContent: 'center',
+        fontFamily: 'Inter-Black',
+        alignItems: "center",
+        justifyContent: 'center',
+        alignContent: 'center'
+    },
+
     incidentsValue: {
         color: '#203242',
         //flex: 1,

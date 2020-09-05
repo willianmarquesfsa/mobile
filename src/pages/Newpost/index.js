@@ -6,24 +6,21 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
-  TouchableWithoutFeedback,
   View,
   Image,
-  Alert,
   TouchableOpacity,
   AsyncStorage,
-  ButtonText,
   ActivityIndicator
 } from 'react-native';
-import {Feather, Entypo, AntDesign, MaterialCommunityIcons} from '@expo/vector-icons';
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
+import { AntDesign} from '@expo/vector-icons';
+import RadioForm from 'react-native-simple-radio-button';
 import * as Font from 'expo-font';
 import PropTypes from 'prop-types';
-//import { render } from 'react-dom';
 import { AppLoading } from 'expo';
 import { Dimensions } from 'react-native';
 import api from '../../services/api';
-import {AdMobBanner, AdMobRewarded} from 'expo-ads-admob'
+import { AdMobRewarded} from 'expo-ads-admob'
+import { getPermissionsAsync } from 'expo-location';
 
 
 var radio_props = [
@@ -71,6 +68,8 @@ export default class Newpost extends React.Component {
   }
 
 
+  
+
   static propTypes = {
     navigation: PropTypes.shape({
       navigate: PropTypes.func,
@@ -85,7 +84,7 @@ export default class Newpost extends React.Component {
 
     this.bannerAdId = Platform.OS === "ios" ? "ca-app-pub-4742876649235540/1957614815": "ca-app-pub-4742876649235540/4478345684";
   
-    this._loadFontsAsync();
+    
 
  
     this. state = {
@@ -107,7 +106,37 @@ export default class Newpost extends React.Component {
   //this.InputAccessoryView = this.InputAccessoryView.bind(this);
   }
 
+  componentDidMount(){
+    this._loadFontsAsync();
+    this.buscarlocalizacao2()
+    
+  }
+
+  componentWillUnmount(){
+    this._loadFontsAsync();
+    this.buscarlocalizacao2()
+  }
+
+  buscarlocalizacao2 = () => {
+   
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const latitude1 = JSON.stringify(position.coords.latitude);
+        const longitude1 = JSON.stringify(position.coords.longitude);
+ 
+       
+      },
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    );
+ 
+    //console.log(longitude1)
+  };
+ 
+
+  
+
  buscarlocalizacao = () => {
+   
    navigator.geolocation.getCurrentPosition(
      position => {
        const latitude1 = JSON.stringify(position.coords.latitude);

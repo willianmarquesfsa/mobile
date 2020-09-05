@@ -173,6 +173,16 @@ export default class Incidents extends React.Component {
           Linking.openURL(`${coordenadas}`);
           
         };
+        _listEmptyComponent = () => {
+    
+          return (
+              
+              <Text style={styles.seminternet}>Sem internet!</Text>
+                  
+              
+          )
+      }
+    
 
 
         addico = () =>{
@@ -244,6 +254,7 @@ export default class Incidents extends React.Component {
         
                      <FlatList
                          data={this.state.incidents}
+                         ListEmptyComponent={this._listEmptyComponent}
                          keyExtractor={incident => String(incident.id)}
                          style={styles.incidentsList}
                          //showsVerticalScrollIndicator={false}
