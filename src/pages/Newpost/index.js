@@ -62,13 +62,13 @@ export default class Newpost extends React.Component {
     await Font.loadAsync(customFonts);
     this.setState({ fontsLoaded: true });
        
-        await AdMobRewarded.setAdUnitID(this.bannerAdId); // Test ID, Replace with your-admob-unit-id
-        await AdMobRewarded.requestAdAsync();
-        await AdMobRewarded.showAdAsync();
+        //await AdMobRewarded.setAdUnitID(this.bannerAdId); // Test ID, Replace with your-admob-unit-id
+       // await AdMobRewarded.requestAdAsync();
+        //await AdMobRewarded.showAdAsync();
   }
 
 
-  async verifyLocationPermission() {
+   verifyLocationPermission = async () => {
     try {
       const granted = await PermissionsAndroid.request(
         PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
@@ -76,9 +76,12 @@ export default class Newpost extends React.Component {
       if (granted === PermissionsAndroid.RESULTS.GRANTED) {
         console.log('permissão concedida');
         this.setState({setHasLocationPermission: true})
+        this.setState({isReady: false})
+        this.buscarlocalizacao()
+        
       } else {
         console.error('permissão negada');
-        
+        //this.teste()
         this.setState({setHasLocationPermission: true})
         
       }
@@ -86,6 +89,9 @@ export default class Newpost extends React.Component {
       console.warn(err);
     }
   }
+
+
+ 
 
   
 
@@ -128,40 +134,28 @@ export default class Newpost extends React.Component {
      
   };
   //this.InputAccessoryView = this.InputAccessoryView.bind(this);
+  
   }
 
   componentDidMount(){
     this._loadFontsAsync();
     
-    this.verifyLocationPermission()
+    
     
   }
 
   componentWillUnmount(){
     this._loadFontsAsync();
     
-    this.verifyLocationPermission()
+    
   }
 
-  buscarlocalizacao2 = () => {
-   
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        const latitude1 = JSON.stringify(position.coords.latitude);
-        const longitude1 = JSON.stringify(position.coords.longitude);
- 
-       
-      },
-      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-    );
- 
-    //console.log(longitude1)
-  };
- 
+    
 
-  
+ buscarlocalizacao = async () => {
+  console.log('buca')
 
- buscarlocalizacao = () => {
+  try{
    
    navigator.geolocation.getCurrentPosition(
      position => {
@@ -177,7 +171,11 @@ export default class Newpost extends React.Component {
      },
      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
    );
-
+   
+   setTimeout(()=>{this.teste()}, 1000 )
+    }
+    catch(Err){console.log('sasas')}
+    
    //console.log(longitude1)
  };
 
@@ -210,12 +208,25 @@ export default class Newpost extends React.Component {
   };
 
   handleSignUpPress = async () => {
-    this.setState({isReady: false})
+
+    
 
     if (this.state.localizacao == '2') {
-      this.buscarlocalizacao()
+            
+      this.verifyLocationPermission()
+            
+      
     }
+        if (this.state.localizacao == '1') {
+          this.setState({google: ''})
+          this.teste()
+        }
+        
+  };
 
+  teste = async () => {
+    console.log('teste')
+    this.setState({isReady: false})
     const value = await AsyncStorage.getItem('ongId');
 
     
@@ -270,6 +281,7 @@ export default class Newpost extends React.Component {
             this.props.dispatch({ type: 'INCREMENT2' })
             this.props.dispatch({ type: 'FOTO' })
             
+            this.setState({setHasLocationPermission: true})
             setTimeout(()=>{this.props.navigation.navigate('Postagem'), this.setState({isReady: true})}, 500 )
             
             
@@ -286,10 +298,8 @@ export default class Newpost extends React.Component {
       } catch (_err) {
         this.setState({ error: 'Houve um problema com o cadastro, verifique os dados preenchidos!' });
       }
-    
-    
-    }
-  };
+  }
+}
 
 
 

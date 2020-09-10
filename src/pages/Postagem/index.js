@@ -37,7 +37,7 @@ export default class Postagem extends React.Component {
   async _loadFontsAsync() {
     await Font.loadAsync(customFonts);
     this.setState({ fontsLoaded: true });
-  }c
+  }
  
 
   constructor(props) {
@@ -274,7 +274,9 @@ sendGoogleMaps(coordenadas) {
             <Text style={styles.destaque}>{this.simnao(todo.destaque)}</Text>
            
              <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', alignContent: 'center'}}>
-              <Text style={styles.description1}>Localização da Loja     --</Text>
+              <Text style={styles.description1}>Localização da Loja {todo.google} --</Text>
+
+              <Text></Text>
             
                <TouchableOpacity style={styles.action2} onPress={() => this.sendGoogleMaps(todo.google)}>
                        <MaterialCommunityIcons name={'google-maps'} size={Dimensions.get('window').width*0.065} color={'#0A1F30'}/>

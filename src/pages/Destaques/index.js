@@ -20,7 +20,7 @@ const windowHeight = Dimensions.get('window').height;
 
 
 export default class Destaque extends React.Component {
-    _loadFontsAsync = async () => {
+    async _loadFontsAsync() {
         await Font.loadAsync(customFonts);
         this.setState({ fontsLoaded: true });
           
@@ -55,10 +55,13 @@ export default class Destaque extends React.Component {
         
     }
 
-     componentWillUnmount(){
-       this._retrieveData()
-       this._loadFontsAsync();
-     }
+    componentWillUnmount(){
+      this._loadFontsAsync();
+      
+      
+    }
+
+     
      
       onRefresh() {
         this.setState({isFetching: true,
