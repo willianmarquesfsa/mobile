@@ -61,10 +61,7 @@ export default class Newpost extends React.Component {
   async _loadFontsAsync() {
     await Font.loadAsync(customFonts);
     this.setState({ fontsLoaded: true });
-       
-        //await AdMobRewarded.setAdUnitID(this.bannerAdId); // Test ID, Replace with your-admob-unit-id
-       // await AdMobRewarded.requestAdAsync();
-        //await AdMobRewarded.showAdAsync();
+   
   }
 
 
@@ -89,10 +86,6 @@ export default class Newpost extends React.Component {
       console.warn(err);
     }
   }
-
-
- 
-
   
 
   static propTypes = {
@@ -106,12 +99,8 @@ export default class Newpost extends React.Component {
   constructor(props) {
     super(props);
 
-
     this.bannerAdId = Platform.OS === "ios" ? "ca-app-pub-4742876649235540/1957614815": "ca-app-pub-4742876649235540/4478345684";
-  
-    
-
- 
+       
     this. state = {
     Instagram: '',
     title: '',
@@ -130,28 +119,20 @@ export default class Newpost extends React.Component {
     setHasLocationPermission: false,
     userPosition: false,
     setUserPosition: false,
-
      
-  };
-  //this.InputAccessoryView = this.InputAccessoryView.bind(this);
+  }; 
   
   }
 
   componentDidMount(){
-    this._loadFontsAsync();
-    
-    
-    
+    this._loadFontsAsync();    
   }
 
   componentWillUnmount(){
-    this._loadFontsAsync();
-    
+    this._loadFontsAsync();  
     
   }
-
     
-
  buscarlocalizacao = async () => {
   console.log('buca')
 
@@ -163,9 +144,7 @@ export default class Newpost extends React.Component {
        const longitude1 = JSON.stringify(position.coords.longitude);
 
        this.setState({
-        google: `https://maps.google.com/maps?q=${latitude1}%2C${longitude1}&z=17&hl=pt-BR`, 
-
-        
+        google: `https://maps.google.com/maps?q=${latitude1}%2C${longitude1}&z=17&hl=pt-BR`,         
         
         });
      },
@@ -176,7 +155,6 @@ export default class Newpost extends React.Component {
     }
     catch(Err){console.log('sasas')}
     
-   //console.log(longitude1)
  };
 
 
@@ -185,19 +163,14 @@ export default class Newpost extends React.Component {
 
     
   };
-
   handleLocalizacaoChange = (localizacao) => {
-    this.setState({ localizacao });
-
-    
+    this.setState({ localizacao });    
   };
 
   handleValueChange = async (value) => {
-    this.setState({value})
-      
+    this.setState({value})    
     
   };
-
      
  handleDestaqueChange = (destaque) => {
   this.setState({ destaque });
@@ -207,29 +180,23 @@ export default class Newpost extends React.Component {
     this.props.navigation.navigate('Destaque');
   };
 
-  handleSignUpPress = async () => {
-
-    
+  handleSignUpPress = async () => {    
 
     if (this.state.localizacao == '2') {
             
-      this.verifyLocationPermission()
-            
+      this.verifyLocationPermission()            
       
     }
         if (this.state.localizacao == '1') {
           this.setState({google: ''})
           this.teste()
-        }
-        
+        }        
   };
 
   teste = async () => {
     console.log('teste')
     this.setState({isReady: false})
-    const value = await AsyncStorage.getItem('ongId');
-
-    
+    const value = await AsyncStorage.getItem('ongId');    
 
     if (this.state.value.length === 0 || this.state.destaque.length === 0
         
@@ -242,16 +209,13 @@ export default class Newpost extends React.Component {
         var request = new XMLHttpRequest();
         request.open('GET', `https://instagram.com/${this.state.value}/`);
         request.send();
-
-
         request.onreadystatechange = (e) => {
            if (request.readyState !== 4) {
             return;
   }
 
       if (request.status === 200) {
-
-        //console.log('success', request.responseText);
+       
         let xx1 = splitString(request.responseText, space, valim)
         let xx2 = splitString(request.responseText, space2, vatit)
         let xx3 = splitString(request.responseText, space3, vades)
@@ -288,22 +252,15 @@ export default class Newpost extends React.Component {
       } else {
          console.warn('error');
   }
-};         
-       
+};      
 
         this.setState({ success: 'Conta criada com sucesso! Redirecionando para o login', error: '' });
-          
-
         
       } catch (_err) {
         this.setState({ error: 'Houve um problema com o cadastro, verifique os dados preenchidos!' });
       }
   }
-}
-
-
-
-   
+}   
 
   render() {
     if (!this.state.isReady) {
@@ -357,7 +314,7 @@ export default class Newpost extends React.Component {
                 ? pickerSelectStyles.inputIOS
                 : pickerSelectStyles.inputAndroid
             }
-            //blurOnSubmit={false}
+            
           />
 <View style={{paddingVertical: windowHeight*0.007}}>
 
@@ -366,12 +323,12 @@ export default class Newpost extends React.Component {
           radio_props={radio_props}
           initial={'1'}
           onPress={(value) => {this.setState({destaque:value})}}
-          //ChangeText={this.handleWhatsappChange}
+         
         />
 
 <Text style={{paddingVertical: windowHeight*0.028, fontFamily: 'Inter-Black', fontSize: windowHeight*0.024, }}>Deseja marcar sua localização atual como a localização de sua loja?</Text>
 <RadioForm 
-          //style={{fontFamily: 'Inter-Black'}}
+          
           radio_props={radio_props}
           initial={'1'}
           onPress={(value) => {this.setState({localizacao:value})}}
@@ -379,9 +336,6 @@ export default class Newpost extends React.Component {
          
 
 </View>
-
-
-
 
 {this.state.error.length !== 0 && <Text>{this.state.error}</Text>}
 <View style={{marginTop: 30}}>
@@ -392,8 +346,7 @@ export default class Newpost extends React.Component {
         onPress={this.handleSignUpPress}
       />
 
-</View>
-          
+</View>          
           
         </ScrollView>
       </View>
@@ -405,9 +358,7 @@ export default class Newpost extends React.Component {
 const styles = StyleSheet.create({
   container: {
     width: windowWidth,
-    height: windowHeight
-
-   
+    height: windowHeight  
 
   },
   scrollContainer: {
@@ -450,7 +401,7 @@ const pickerSelectStyles = StyleSheet.create({
     borderColor: 'gray',
     borderRadius: 4,
     color: 'black',
-    paddingRight: 30, // to ensure the text is never behind the icon
+    paddingRight: 30, 
   },
   inputAndroid: {
     fontSize: windowHeight*0.022,
@@ -460,6 +411,6 @@ const pickerSelectStyles = StyleSheet.create({
     borderColor: 'black',
     borderRadius: 8,
     color: 'black',
-    paddingRight: 30, // to ensure the text is never behind the icon
+    paddingRight: 30, 
   },
 });

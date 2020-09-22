@@ -5,25 +5,20 @@ import {
   TextInput,
   Platform,
   ScrollView,
-  StyleSheet,
-  TouchableWithoutFeedback,
+  StyleSheet,  
   View,
   Image,
   Alert,
-  TouchableOpacity,
-  ButtonText,
+  TouchableOpacity,  
 } from 'react-native';
-import { Chevron } from 'react-native-shapes';
+
 import { Ionicons } from '@expo/vector-icons';
 import RNPickerSelect, { defaultStyles } from 'react-native-picker-select';
-// import RNPickerSelect, { defaultStyles } from './debug';
 import PropTypes from 'prop-types';
-import { render } from 'react-dom';
 import {Feather} from '@expo/vector-icons';
 import api from '../../services/api';
 import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
-  
+import { AppLoading } from 'expo';  
 import { Dimensions } from 'react-native';
 
   
@@ -54,9 +49,7 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
   
-    this._loadFontsAsync();
-
-  
+    this._loadFontsAsync();  
 
   this. state = {
     username: '',
@@ -122,8 +115,6 @@ export default class Profile extends React.Component {
       ],
       { cancelable: false }
     );
-
-
   }
 
 
@@ -152,6 +143,7 @@ export default class Profile extends React.Component {
                       { label: 'Moda Feminina', value: 'Moda Feminina' },
                       { label: 'Moda Masculina', value: 'Moda Masculina' },
                       { label: 'Casae & Jardin', value: 'CasaeJardin' },
+                      { label: 'Cama Mesa e Banho', value: 'Cama Mesa e Banho' },
                       ]}
               onValueChange={this.handleGrupoChange}
               style={{
@@ -330,9 +322,7 @@ export default class Profile extends React.Component {
               value={this.setState({grupo: this.state.grupo})}                    
               items={[{ label: 'Cabelo e Barba', value: 'Cabelo e Barba'},
                       { label: 'Clinicas e Estetica', value: 'Clinicas e Estetica' },
-                     
-                      
-                      
+                      { label: 'Personal Trainer e Nutricionista', value: 'Personal Trainer e Nutricionista' },                    
                      
                       ]}
               onValueChange={this.handleGrupoChange}
@@ -441,7 +431,7 @@ export default class Profile extends React.Component {
                         color: '#203242',
                               }}
           value={this.setState({centrolojistico: this.state.centrolojistico})}                    
-          items={[{ label: 'Agro e PetShos', value: 'Agro e PetShos'},
+          items={[{ label: 'Agronegócio e PetShops', value: 'Agro e PetShos'},
                   { label: 'Autos', value: 'Autos' },
                   { label: 'Casa e Construção', value: 'Casa e Construção' },
                   { label: 'Manutenção em informática', value: 'Manutenção em informática' },
@@ -532,7 +522,7 @@ export default class Profile extends React.Component {
           </TouchableOpacity>
             <Image source={require('../../../assets/icon.png')} 
                    style={{height: windowHeight*0.12, 
-                           width: windowWidth*0.2,
+                           width: windowWidth*0.60,
                            marginBottom: 10,
                            paddingHorizontal: windowWidth*0.38}} resizeMode="contain"></Image>
           </View>
@@ -541,17 +531,13 @@ export default class Profile extends React.Component {
             
             value={this.state.username}
             onChangeText={this.handleUsernameChange}
-            //returnKeyType="next"
-            //enablesReturnKeyAutomatically
-            //onSubmitEditing={() => {
-              //this.inputRefs.favSport0.togglePicker();
-            
+                
             style={
               Platform.OS === 'ios'
                 ? pickerSelectStyles.inputIOS
                 : pickerSelectStyles.inputAndroid
             }
-            //blurOnSubmit={false}
+          
           />
 
            <Text style={{paddingVertical: windowHeight*0.01, fontFamily: 'Inter-Black', fontSize: windowHeight*0.021,}}>E-mail.</Text>
@@ -559,34 +545,27 @@ export default class Profile extends React.Component {
             
             value={this.state.email}
             onChangeText={this.handleEmailChange}
-            //returnKeyType="next"
-            //enablesReturnKeyAutomatically
-            //onSubmitEditing={() => {
-              //this.inputRefs.favSport0.togglePicker();
+            
             
             style={
               Platform.OS === 'ios'
                 ? pickerSelectStyles.inputIOS
                 : pickerSelectStyles.inputAndroid
             }
-            //blurOnSubmit={false}
+            
           />
            <Text style={{paddingVertical: windowHeight*0.01, fontFamily: 'Inter-Black', fontSize: windowHeight*0.021,}}>Whatsapp.</Text>
           <TextInput
             placeholder="Ex: 5575991234455"
             value={this.state.whatsapp}
             onChangeText={this.handleWhatsappChange}
-            //returnKeyType="next"
-            //enablesReturnKeyAutomatically
-            //onSubmitEditing={() => {
-              //this.inputRefs.favSport0.togglePicker();
-            
+                        
             style={
               Platform.OS === 'ios'
                 ? pickerSelectStyles.inputIOS
                 : pickerSelectStyles.inputAndroid
             }
-            //blurOnSubmit={false}
+            
           />
 
  
@@ -634,11 +613,9 @@ export default class Profile extends React.Component {
         title="Cadastrar"
         onPress={this.handleSignUpPress}
         color="#203242"
-      />
- 
+      /> 
 
-</View>
-          
+</View>          
           
         </ScrollView>
       </View>

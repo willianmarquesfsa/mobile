@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-import { StatusBar, AsyncStorage, Alert, Text } from 'react-native';
-import { StackActions, NavigationActions, useNavigation, } from 'react-navigation';
-
+import { AsyncStorage} from 'react-native';
 import api from '../../services/api';
-
-
 import {
   Container,
   Logo,
@@ -17,10 +12,6 @@ import {
   SignUpLink,
   SignUpLinkText,
 } from './styles';
-import { View } from 'native-base';
-
-//import MenuComponent from '../../routes'
-
 
 export default function Logon({ count, dispatch, navigation }) {
 
@@ -28,12 +19,8 @@ export default function Logon({ count, dispatch, navigation }) {
   return <Logonk navigation={navigation} dispatch={dispatch} count={count} ></Logonk>
 }
 
-
-
 class Logonk extends Component {
   
-  
-
   static navigationOptions = {
     header: null,
   };
@@ -50,23 +37,12 @@ class Logonk extends Component {
   handleEmailChange = (email) => {
     this.setState({ email });
   };
-  
-    
+      
   handleCreateAccountPress = () => {
     this.props.navigation.navigate('Profile');
-    //const ggg = route.params.count
-    //console.log(ggg)
-    //this.InputChange()
-    //console.log(this.InputChange1()+'nnn')
+    
   };
-
-  /*jjjjj = () => {
-    this.props.mudarstado2()
-  }
-
-  
-*/
-
+ 
 jjjjj = () => {
   this.props.dispatch({ type: 'INCREMENT' })
 }
@@ -74,7 +50,6 @@ jjjjj = () => {
 jjjjj2 = () => {
   this.props.dispatch({ type: 'DECREMENT' })
 }
-
 
 InputChange1 = () => {
     
@@ -94,19 +69,6 @@ InputChange1 = () => {
           
         await AsyncStorage.setItem('ongName', response.data.name);
         await AsyncStorage.setItem('ongId', this.state.email);
-          console.log(response.data)
-        /*const resetAction = StackActions.reset({
-          index: 0,
-          actions: [
-            NavigationActions.navigate({ routeName: 'Destaques' }),
-          ],
-        });*/
-
-        //this.props.mudarstado2();
-        //this.jjjjj()
-        //this.props.setState({visual:<View></View>})
-        
-        //this.props.navigation.setState({visual:<View></View>});
         this.props.dispatch({ type: 'INCREMENT' })
         this.props.navigation.navigate('Postagem');
         
@@ -117,15 +79,9 @@ InputChange1 = () => {
     }
   };
 
-  
-
   render() {
     return (
       <Container>
-      
-
-
-        
         <Logo source={require('../../../assets/icon.png')} resizeMode="contain" />
         <Input
           placeholder="ID de Acesso"
@@ -134,14 +90,11 @@ InputChange1 = () => {
           autoCapitalize="none"
           autoCorrect={false}
         />
-        
         {this.state.error.length !== 0 && <ErrorMessage>{this.state.error}</ErrorMessage>}
         <Button onPress={this.handleSignInPress}>
           <ButtonText>Entrar</ButtonText>
         </Button>
-        
-        
-        <SignUpLink onPress={this.handleCreateAccountPress}>
+          <SignUpLink onPress={this.handleCreateAccountPress}>
           <SignUpLinkText>Criar conta grátis</SignUpLinkText>
         </SignUpLink>
       </Container>

@@ -13,13 +13,7 @@ import { StatusBar, AsyncStorage } from 'react-native';
 import MenuComponent from './MenuComponent'
 import MenuComponentcopy from './MenuComponentcopy'
 import * as Font from 'expo-font';
-//import { Container, Header, Body, Text, ListItem, Left, Right, Icon} from 'native-base';
 import { Provider, connect } from 'react-redux';
-//import { createStore, combineReducers } from 'redux';
-//import { NavigationContainer } from '@react-navigation/native';
-//import { createStackNavigator } from '@react-navigation/stack';
-//import { RFPercentage } from "react-native-responsive-fontsize";
-//import { useNavigation, DrawerActions, useRoute } from '@react-navigation/native';
 
 
 let customFonts = {
@@ -97,6 +91,9 @@ const ClinicaseEstetica = connect(state => ({ count: state.count,
 const CabeloeBarba = connect(state => ({ count: state.count, 
                                       x:'Cabelo e Barba', 
                                       segun: 'Saúde e Beleza'}))(Incidents);
+const PersonalTrainereNutricionista = connect(state => ({ count: state.count, 
+                                        x:'Personal Trainer e Nutricionista', 
+                                        segun: 'Saúde e Beleza'}))(Incidents);
 const SaúdeeBeleza = connect(state => ({ count: state.count, 
                                       x:'Todos', 
                                       segun: 'Saúde e Beleza'}))(Incidents);
@@ -241,6 +238,10 @@ const ModaMasculina = connect(state => ({ count: state.count,
 const ModaFeminina = connect(state => ({ count: state.count, 
                                        x:'ModaFeminina', 
                                      segun: 'Feiraguay'}))(Incidents);
+
+const CamaMesaeBanho3c = connect(state => ({ count: state.count, 
+                                      x:'Cama Mesa e Banho', 
+                                    segun: 'Centro da Cidade'}))(Incidents);
 const FeiraGuay = connect(state => ({ count: state.count, 
                                       x:'Todos', 
                                       segun: 'Feiraguay'}))(Incidents);
@@ -254,11 +255,9 @@ const Desta = connect(state => ({ count: state.count,
 export class Routesff2 extends Component {
 
   constructor(props) {
-    super(props);
-    
+    super(props);    
      
-    this.state = {
-      
+    this.state = {      
       fontsLoaded: false
     }
        
@@ -386,7 +385,6 @@ const CounterContainer3d3bfffd = connect(state => ({ count2: state.count2 }))(Po
 
 const Countdfdf= connect(state => ({ count2: state.count2, count3: state.count3 }))(Newpost);
 
-//const InciRedux = connect(state => ({ count: state.count }))(Incidents);
 
 export class Routesff extends Component {
 
@@ -460,6 +458,7 @@ export class Routesff extends Component {
 <Drawer.Screen name="Eletronicos3C" component={Eletronicos3C}/>
 <Drawer.Screen name="Moda Masculina3C" component={ModaMasculina3C}/>
 <Drawer.Screen name="Moda Feminina3C" component={ModaFeminina3C}/>
+<Drawer.Screen name="Cama Mesa e Banho" component={CamaMesaeBanho3c}/>
 
 <Drawer.Screen name="Todos4" component={Serviços}/>
 <Drawer.Screen name="informaticaeeletronica" component={CPUsnotebooks}/>
@@ -492,7 +491,8 @@ export class Routesff extends Component {
 
 <Drawer.Screen name="Saúde e Beleza" component={SaúdeeBeleza}/>
 <Drawer.Screen name="Cabelo e Barba" component={CabeloeBarba}/>
-<Drawer.Screen name="Clinicas e Estetica" component={ClinicaseEstetica}/>
+<Drawer.Screen name="Clinicas e Estetica" component={ClinicaseEstetica}/> 
+<Drawer.Screen name="Personal Trainer e Nutricionista" component={PersonalTrainereNutricionista}/>
 
 <Drawer.Screen name="Serviços Diversos" component={ServiçosDiversos}/>
 <Drawer.Screen name="Chaveiros e Carimbos" component={ChaveiroseCarimbos}/>

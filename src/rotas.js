@@ -183,6 +183,10 @@ render() {
     <Left><FontAwesome5 name="eye" size={windowWidth*0.045} color='#FCAD02' /></Left>
     <Body><Text  style={{color: '#F0F0F2',fontSize: windowWidth*0.042,fontFamily: 'Inter-Black'}}>Moda Feminina</Text></Body>
   </ListItem>
+  <ListItem icon onPress={() => this.props.navigation.navigate('Cama Mesa e Banho')}>
+    <Left><FontAwesome5 name="eye" size={windowWidth*0.045} color='#FCAD02' /></Left>
+    <Body><Text  style={{color: '#F0F0F2',fontSize: windowWidth*0.042,fontFamily: 'Inter-Black'}}>Cama Mesa e Banho</Text></Body>
+  </ListItem>
   
  
   
@@ -397,6 +401,10 @@ render() {
   <ListItem  icon onPress={() => this.props.navigation.navigate('Clinicas e Estetica')}>
     <Left><FontAwesome5 name="eye" size={windowWidth*0.045} color='#FCAD02' /></Left>
     <Body ><Text style={{color: '#F0F0F2', fontSize: windowWidth*0.042,fontFamily: 'Inter-Black'}} >Clinicas e Estetica</Text></Body>
+  </ListItem>
+  <ListItem  icon onPress={() => this.props.navigation.navigate('Personal Trainer e Nutricionista')}>
+    <Left><FontAwesome5 name="eye" size={windowWidth*0.045} color='#FCAD02' /></Left>
+    <Body ><Text style={{color: '#F0F0F2', fontSize: windowWidth*0.042,fontFamily: 'Inter-Black'}} >Personal Trainer e Nutricionista</Text></Body>
   </ListItem>
  
   

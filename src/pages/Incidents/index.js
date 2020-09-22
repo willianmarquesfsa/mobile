@@ -1,27 +1,14 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 import { View, FlatList, Image, Text,AsyncStorage, TouchableOpacity, Button, Linking, StatusBar, StyleSheet, Dimensions, ImageBackground, Html  } from 'react-native';
 import {Feather, FontAwesome, MaterialCommunityIcons, Entypo, AntDesign} from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api'
 import styles from './styles';
 import {Card} from 'react-native-paper';
-import { RFPercentage } from "react-native-responsive-fontsize"; 
-import {useFonts} from '@use-expo/font';
 import { AppLoading } from 'expo';
-//import { ImageBackground } from 'react-native';
-import Constants from 'expo-constants'
-
-
-
-
-
-
-
-import { Row } from 'native-base';
-//import { Text } from 'react-native-paper/lib/typescript/src/components/Avatar/Avatar';
+import Constants from 'expo-constants';
 import * as Font from 'expo-font';
 
-import { bool } from 'prop-types';
+
 
 
 let customFonts = {
@@ -212,12 +199,7 @@ export default class Incidents extends React.Component {
         }
 
         render() {
-            /* let font2 = useFonts({
-               'Inter-Black': require('../../assets/fonts/BellotaText-Bold.ttf'),
-               'Inter-BlackC': require('../../assets/fonts/BellotaText-Regular.ttf'),
-             });
-             //console.log(font2)
-         */
+            
              if (!this.state.fontsLoaded) {
                return <AppLoading />;
              } else {
@@ -227,27 +209,28 @@ export default class Incidents extends React.Component {
                 <View style={styles.container}>
         
                 <View>
-        <StatusBar backgroundColor="#203242" barStyle="Dark-content" ></StatusBar>
-        </View>
-                  <View style={styles.header}>
+                  <StatusBar backgroundColor="#203242" barStyle="Dark-content" ></StatusBar>
+                </View>
+                <View style={styles.header}>
                   <TouchableOpacity onPress={() => this.props.navigation.openDrawer()} > 
-                  <Feather name={'list'} size={windowWidth*0.08} color='#203242' styles={{alignItems: 'center'}}/>
+                    <Feather name={'list'} size={windowWidth*0.08} color='#203242' styles={{alignItems: 'center'}}/>
                  
                   </TouchableOpacity>
-                    <Image style={{height: windowHeight*0.12, width: windowWidth*0.19, }}
+                <Image style={{height: windowHeight*0.12, width: windowWidth*0.60, }}
                        source={require('../../../assets/icon.png')}></Image>
                         
-                  <View>{this.addico()}</View>
-                  </View>
+                <View>{this.addico()}</View>
+                </View>
         
         
         
                      <View style={{flexDirection: 'column', 
                                    
                                    justifyContent: 'flex-start' }}>
-                                  
+
+                       <Text style={styles.headerText}>{this.props.segun}:</Text>           
                        <Text style={styles.headerText}>{this.props.x}.</Text>
-                       <Text style={styles.headerText}>{this.props.segun}:</Text>
+                       
                        </View>
                       
                       

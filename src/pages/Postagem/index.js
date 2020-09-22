@@ -237,7 +237,7 @@ sendGoogleMaps(coordenadas) {
           <Feather name={'list'} size={windowWidth*0.08} color='#203242' styles={{alignItems: 'center'}}/>
          
           </TouchableOpacity>
-            <Image style={{height: windowHeight*0.11, width: windowWidth*0.2, }}
+            <Image style={{height: windowHeight*0.11, width: windowWidth*0.60, }}
                source={require('../../../assets/icon.png')}></Image>
                 {this.acultbo()}
 

@@ -57,22 +57,18 @@ export default class Destaque extends React.Component {
 
     componentWillUnmount(){
       this._loadFontsAsync();
-      
-      
+            
     }
-
-     
-     
+         
       onRefresh() {
         this.setState({isFetching: true,
                        page: 1,  
                        incidents: [], 
                        loanding: false, },() => {this._retrieveData()});
     }
-
     
       _retrieveData = async () => {
-        //console.log(this.state.centrolojistico.length)
+       
 
         if (this.state.loanding){
           return;
@@ -138,8 +134,7 @@ export default class Destaque extends React.Component {
     
       return (
           
-          <Text style={styles.seminternet}>Sem internet!</Text>
-              
+          <Text style={styles.seminternet}>Sem internet!</Text>              
           
       )
   }
@@ -160,7 +155,7 @@ render() {
             <TouchableOpacity onPress={() => this.props.navigation.openDrawer()} > 
                <Feather name={'list'} size={windowWidth*0.08} color='#203242' styles={{alignItems: 'center'}}/>
             </TouchableOpacity>
-            <Image style={{height: windowHeight*0.12, width: windowWidth*0.19, }}
+            <Image style={{height: windowHeight*0.12, width: windowWidth*0.60, }}
                source={require('../../../assets/icon.png')}></Image>
             <View>{this.addico()}</View>
          </View>
