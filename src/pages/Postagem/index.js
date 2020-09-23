@@ -79,8 +79,7 @@ export default class Postagem extends React.Component {
   //this.loandPost()
   }
   componentDidMount(){
-    console.log(this.props.count2+'hahah')
-    console.log(this.props.count+'2508')
+  
     this.onRefresh()
     
     this._unsubscribe = this.props.navigation.addListener('focus', () => {
@@ -161,13 +160,31 @@ acultbo = () => {
       
     });
     this.props.dispatch({ type: 'DECREMENT2' })
-    console.log('OK')
+    
     this.setState({todos: []})
     
      }
      catch(error) {
          console.log(error)
      }
+   }
+
+   renderlocali(){
+     if(this.state.google == ''){
+       return
+     }
+     else {
+       return (<View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', alignContent: 'center'}}>
+       <Text style={styles.description1}>Localização da Loja  --</Text>
+
+       <Text></Text>
+     
+        <TouchableOpacity style={styles.action2} onPress={() => this.sendGoogleMaps(todo.google)}>
+                <MaterialCommunityIcons name={'google-maps'} size={Dimensions.get('window').width*0.065} color={'#0A1F30'}/>
+        </TouchableOpacity>
+       </View>)
+     }
+
    }
 
 
@@ -181,6 +198,7 @@ sendGoogleMaps(coordenadas) {
 };
 
    _retrieveData = async () => {
+     
        
     try {
       const value = await AsyncStorage.getItem('ongId');
@@ -199,6 +217,10 @@ sendGoogleMaps(coordenadas) {
                  this.setState({idp: ggg.id})
                  this.setState({mudar: true})
                  this.setState({ isFetching: false })
+                 this.setState({google: ggg.google})
+
+
+                 
               
                this.props.dispatch({ type: 'INCREMENT2' })
            })
@@ -273,15 +295,7 @@ sendGoogleMaps(coordenadas) {
             <Text style={styles.description1}>Destacado na pagina principal:</Text>
             <Text style={styles.destaque}>{this.simnao(todo.destaque)}</Text>
            
-             <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', alignContent: 'center'}}>
-              <Text style={styles.description1}>Localização da Loja {todo.google} --</Text>
-
-              <Text></Text>
-            
-               <TouchableOpacity style={styles.action2} onPress={() => this.sendGoogleMaps(todo.google)}>
-                       <MaterialCommunityIcons name={'google-maps'} size={Dimensions.get('window').width*0.065} color={'#0A1F30'}/>
-               </TouchableOpacity>
-              </View>
+             {this.renderlocali()}
 
               <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: windowHeight*0.03}}>
                <Text style={styles.description1}>Instagram da Loja       -- </Text>                   
