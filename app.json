@@ -11,9 +11,9 @@
       "ios",
       "android"
     ],
-    "version": "3.0.0",
+    "version": "3.0.1",
     "orientation": "portrait",
-    "icon": "./assets/Classificadosfsa2.png",
+    "icon": "./assets/classificadosfsa2.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -33,7 +33,7 @@
       }
     },
     "android": {
-      "versionCode": 6,
+      "versionCode": 7,
       "package": "com.classificadosfsa.willianmarques",
       "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"],
       "config": {
