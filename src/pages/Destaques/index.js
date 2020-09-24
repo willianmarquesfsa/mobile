@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React from 'react';
 import { View, FlatList, Image, Text,AsyncStorage, TouchableOpacity, Button, Linking, StatusBar, StyleSheet, Dimensions, ImageBackground, Html, Platform  } from 'react-native';
 import {Feather, FontAwesome, MaterialCommunityIcons, Entypo, AntDesign} from '@expo/vector-icons';
 import api from '../../services/api'
@@ -27,27 +27,23 @@ export default class Destaque extends React.Component {
       }
           
     constructor(props) {
-        super(props)
+      super(props)
  
-        this.bannerAdId = Platform.OS === "ios" ? "ca-app-pub-4742876649235540/4064903407": "ca-app-pub-4742876649235540/2683523067";
-       
-        
-        this.state = {
-         
-          message: 'Olá, encontrei sua empresa no AcheiFsa',
-          page: 1,
-          grupo: 'Todoss',
-          centrolojistico: 'Feiraguay',
-          incidents: [],
-          total: 0,
-          isFetching: false,
-          fontsLoaded: false,
-          loanding: false,
-          error: '',
-          success: '',
-        };
-    
-      }
+      this.bannerAdId = Platform.OS === "ios" ? "ca-app-pub-4742876649235540/4064903407": "ca-app-pub-4742876649235540/2683523067";        
+      this.state = {         
+        message: 'Olá, encontrei sua empresa no AcheiFsa',
+        page: 1,
+        grupo: 'Todoss',
+        centrolojistico: 'Feiraguay',
+        incidents: [],
+        total: 0,
+        isFetching: false,
+        fontsLoaded: false,
+        loanding: false,
+        error: '',
+        success: '',
+      };    
+    }
 
     componentDidMount(){
       this._retrieveData()
@@ -82,30 +78,30 @@ export default class Destaque extends React.Component {
                 params: {page: this.state.page, 
                          grupo: this.state.grupo,
                          centrolojistico: this.state.centrolojistico},
-        })
+          })
             
         this.state.incidents.push(...response.data)
         this.setState({page: (this.state.page + 1)})
         this.setState({loanding: false})
             
-      }
-       catch(err) {console.log(err+'0409')}
+       }
+        catch(err) {console.log(err+'0409')}
         
-       setTimeout(() => {
-       this.setState({isFetching: false});
-       }, 4000);
-    }  
+        setTimeout(() => {
+        this.setState({isFetching: false});
+        }, 4000);
+     }  
     
     sendWhatsapp(whatsapp) {
       Linking.openURL(`whatsapp://send?phone=${whatsapp}&text=${this.state.message}`);
-};
+    };
     sendIstagram(instagram) {
         Linking.openURL(`${instagram}`);
     };
      
     sendGoogleMaps(coordenadas) {
         Linking.openURL(`${coordenadas}`);
-      };
+    };
 
     addico = () =>{
     
@@ -119,14 +115,14 @@ export default class Destaque extends React.Component {
         return ( <TouchableOpacity onPress={() => this.props.navigation.navigate('Postagem')} > 
                    <Entypo name="add-to-list" size={windowWidth*0.08} color='#203242' />     
                  </TouchableOpacity>)
-        }    
+      }    
     }
 
     _listEmptyComponent = () => {    
       return (          
           <Text style={styles.seminternet}>Sem internet!</Text>       
       )
-  }
+    }
 
     renderlocalizacao(google){
       if(google == "") {
@@ -141,7 +137,7 @@ export default class Destaque extends React.Component {
             <MaterialCommunityIcons name={'google-maps'} size={windowWidth*0.05} color={'#1D2B44'}/>
           </TouchableOpacity>
             )
-         }
+      }
     }
 
     render() {
@@ -231,11 +227,8 @@ export default class Destaque extends React.Component {
              />
        
           </View>
-    );
-  }
-}
-
-
-    
+        );
+     }
+   }   
 
 }
