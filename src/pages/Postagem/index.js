@@ -169,8 +169,8 @@ acultbo = () => {
      }
    }
 
-   renderlocali(){
-     if(this.state.google == ''){
+   renderlocali(google){
+     if(google == ''){
        return
      }
      else {
@@ -179,7 +179,7 @@ acultbo = () => {
 
        <Text></Text>
      
-        <TouchableOpacity style={styles.action2} onPress={() => this.sendGoogleMaps(todo.google)}>
+        <TouchableOpacity style={styles.action2} onPress={() => this.sendGoogleMaps(google)}>
                 <MaterialCommunityIcons name={'google-maps'} size={Dimensions.get('window').width*0.065} color={'#0A1F30'}/>
         </TouchableOpacity>
        </View>)
@@ -217,15 +217,11 @@ sendGoogleMaps(coordenadas) {
                  this.setState({idp: ggg.id})
                  this.setState({mudar: true})
                  this.setState({ isFetching: false })
-                 this.setState({google: ggg.google})
-
-
-                 
-              
-               this.props.dispatch({ type: 'INCREMENT2' })
-           })
-
-      }
+                 this.setState({google: ggg.google})             
+                 this.props.dispatch({ type: 'INCREMENT2' })
+                              }
+                 )
+        }
 
       } catch (error) {
      
@@ -235,8 +231,6 @@ sendGoogleMaps(coordenadas) {
       this.setState({isFetching: false});
     }, 4000);
   };
-
-
 
   
   render() {
@@ -295,7 +289,7 @@ sendGoogleMaps(coordenadas) {
             <Text style={styles.description1}>Destacado na pagina principal:</Text>
             <Text style={styles.destaque}>{this.simnao(todo.destaque)}</Text>
            
-             {this.renderlocali()}
+             {this.renderlocali(todo.google)}
 
               <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: windowHeight*0.03}}>
                <Text style={styles.description1}>Instagram da Loja       -- </Text>                   

@@ -133,7 +133,7 @@ export default class Destaque extends React.Component {
           <TouchableOpacity style={{flex:1, 
                                     alignItems: "center",
                                     alignContent: 'center',}}
-                            onPress={() => this.sendGoogleMaps(incident.google)}>
+                            onPress={() => this.sendGoogleMaps(google)}>
             <MaterialCommunityIcons name={'google-maps'} size={windowWidth*0.05} color={'#1D2B44'}/>
           </TouchableOpacity>
             )
