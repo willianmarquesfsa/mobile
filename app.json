@@ -13,11 +13,12 @@
     ],
     "version": "3.0.2",
     "orientation": "portrait",
-    "icon": "./assets/classificadosfsa2.png",
+    
+    "icon": "./assets/classificadosfsa4.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#fff"
+      "backgroundColor": "#ffffff"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -33,17 +34,13 @@
       }
     },
     "android": {
+      
       "versionCode": 8,
       "package": "com.classificadosfsa.willianmarques",
       "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"],
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-4742876649235540~3943799699"
       }
-    }
-    
-    
-
-
-    
+    }    
   }
 }
