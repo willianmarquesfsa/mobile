@@ -91,13 +91,12 @@ export default class Profile extends React.Component {
   };
 
   handleGrupoChange = (grupo) => {
-    
     this.setState({ grupo });
    
   };
 
   createTwoButtonAlert = (Texto) => {
-  this.setState({username: '',
+    this.setState({username: '',
                        email: '',
                        whatsapp: '',
                        grupo: '',
@@ -127,71 +126,64 @@ export default class Profile extends React.Component {
          centrolojistico == 'Polimodas'||
          centrolojistico == 'Centro da Cidade'
          ) {
-          this.setState({visual2: <View><View paddingVertical={2} />
+          this.setState({visual2: 
+            <View><View paddingVertical={2} />
 
-            <Text style={{paddingVertical: windowHeight*0.01, fontFamily: 'Inter-Black', fontSize: windowHeight*0.021,}}>Categoria</Text>
-            {/* and value defined */}
-            <RNPickerSelect
-              placeholder={{
+              <Text style={{paddingVertical: windowHeight*0.01, fontFamily: 'Inter-Black', fontSize: windowHeight*0.021,}}>Categoria</Text>
+              {/* and value defined */}
+               <RNPickerSelect
+                 placeholder={{
                             label: 'Selecione a categoria do seu negócio',
                             value: null,
                             color: '#203242',
                                   }}
-              value={this.setState({grupo: this.state.grupo})}                    
-              items={[{ label: 'Acessorios Diversos', value: 'AcessoriosDiversos"'},
-                      { label: 'Beleza', value: 'Beleza' },
-                      { label: 'Moda Feminina', value: 'Moda Feminina' },
-                      { label: 'Moda Masculina', value: 'Moda Masculina' },
-                      { label: 'Casae & Jardin', value: 'CasaeJardin' },
-                      { label: 'Cama Mesa e Banho', value: 'Cama Mesa e Banho' },
+                value={this.setState({grupo: this.state.grupo})}                    
+                items={[{ label: 'Acessorios Diversos', value: 'AcessoriosDiversos"'},
+                        { label: 'Beleza', value: 'Beleza' },
+                        { label: 'Moda Feminina', value: 'Moda Feminina' },
+                        { label: 'Moda Masculina', value: 'Moda Masculina' },
+                        { label: 'Casae & Jardin', value: 'CasaeJardin' },
+                        { label: 'Cama Mesa e Banho', value: 'Cama Mesa e Banho' },
                       ]}
-              onValueChange={this.handleGrupoChange}
-              style={{
-                ...pickerSelectStyles,
-                iconContainer: {
-                  top: 10,
-                  right: 12,
-                },
-              }}
+                onValueChange={this.handleGrupoChange}
+                style={{
+                  ...pickerSelectStyles,
+                  iconContainer: {
+                    top: 10,
+                    right: 12,
+                                 },
+                      }}
               
-              useNativeAndroidPickerStyle={false}
-              textInputProps={{ underlineColor: 'yellow' }}
-              Icon={() => {
-                return <Ionicons name="md-arrow-down" size={24} color="gray" />;
-              }}
+                useNativeAndroidPickerStyle={false}
+                textInputProps={{ underlineColor: 'yellow' }}
+                Icon={() => {
+                  return <Ionicons name="md-arrow-down" size={24} color="gray" />;
+                            }
+                     }
             /></View>})
          }
          
          if ( centrolojistico == 'Agro e PetShos') {
-           this.setState({visual2: <View><View paddingVertical={2} />
+           this.setState({visual2: 
+             <View><View paddingVertical={2} />
 
-            <Text style={{paddingVertical: windowHeight*0.01, fontFamily: 'Inter-Black', fontSize: windowHeight*0.021,}}>Categoria de Agro e PetShos</Text>
-            {/* and value defined */}
-            <RNPickerSelect
-              placeholder={{
-                            label: 'Selecione uma categoria de Agro e PetShops',
-                            value: null,
-                            color: '#203242',
-                                  }}
-              value={this.setState({grupo: this.state.grupo})}                    
-              items={[{ label: 'Nutrição e Estetica animal', value: 'Nutrição e Estetica animal'},
-                      { label: 'Veterinaria', value: 'Veterinaria' },
-                     
-                      ]}
-              onValueChange={this.handleGrupoChange}
-              style={{
-                ...pickerSelectStyles,
-                iconContainer: {
-                  top: 10,
-                  right: 12,
-                },
-              }}
-              
-              useNativeAndroidPickerStyle={false}
-              textInputProps={{ underlineColor: 'yellow' }}
-              Icon={() => {
-                return <Ionicons name="md-arrow-down" size={24} color="gray" />;
-              }}
+              <Text style={{paddingVertical: windowHeight*0.01, fontFamily: 'Inter-Black', fontSize: windowHeight*0.021,}}>Categoria de Agro e PetShos</Text>
+              {/* and value defined */}
+              <RNPickerSelect
+                placeholder={{
+                              label: 'Selecione uma categoria de Agro e PetShops',
+                              value: null,
+                              color: '#203242',
+                             }}
+                value={this.setState({grupo: this.state.grupo})}                    
+                items={[{ label: 'Nutrição e Estetica animal', value: 'Nutrição e Estetica animal'},
+                        { label: 'Veterinaria', value: 'Veterinaria' },                     
+                       ]}
+                onValueChange={this.handleGrupoChange}
+                style={{...pickerSelectStyles, iconContainer: {top: 10, right: 12,},}}              
+                useNativeAndroidPickerStyle={false}
+                textInputProps={{ underlineColor: 'yellow' }}
+                Icon={() => {return <Ionicons name="md-arrow-down" size={24} color="gray" />;}}
             /></View>})
           
          }
@@ -393,6 +385,7 @@ export default class Profile extends React.Component {
       this.setState({centrolojistico: 'Bares e Restudantes'})
       this.setState({grupo: '2'}) 
       this.setState({visual: <View></View>})
+      this.setState({visual2: <View></View>})
   
     }
 
@@ -524,67 +517,58 @@ export default class Profile extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView
-        ref={ ( ref ) => this.scrollView = ref }
-          onContentSizeChange={ () => {        
-        this.scrollView.scrollToEnd( { animated: false } )
-    } }
-          style={styles.scrollContainer}
-          contentContainerStyle={styles.scrollContentContainer}>
+         ref={ ( ref ) => this.scrollView = ref }
+         onContentSizeChange={ () => {        
+         this.scrollView.scrollToEnd( { animated: true })}}
+         style={styles.scrollContainer}
+         contentContainerStyle={styles.scrollContentContainer}>
           
           <View style={{justifyContent: 'flex-start' , alignItems: "center", flexDirection: 'row', width: windowWidth}}>
-          <TouchableOpacity onPress={() => this.props.navigation.openDrawer()} > 
-          <Feather name={'list'} size={windowWidth*0.08} color='#203242' styles={{alignItems: 'center'}}/>
+            <TouchableOpacity onPress={() => this.props.navigation.openDrawer()} > 
+              <Feather name={'list'} size={windowWidth*0.08} color='#203242' styles={{alignItems: 'center'}}/>
          
-          </TouchableOpacity>
-            <Image source={require('../../../assets/icon.png')} 
+            </TouchableOpacity>
+              <Image source={require('../../../assets/icon.png')} 
                    style={{height: windowHeight*0.12, 
                            width: windowWidth*0.60,
                            marginBottom: 10,
                            paddingHorizontal: windowWidth*0.38}} resizeMode="contain"></Image>
           </View>
-          <Text style={{paddingVertical: windowHeight*0.01, fontFamily: 'Inter-Black', fontSize: windowHeight*0.021,}}>Nome de usuário.</Text>
-          <TextInput
-            
-            value={this.state.username}
-            onChangeText={this.handleUsernameChange}
-                
-            style={
-              Platform.OS === 'ios'
-                ? pickerSelectStyles.inputIOS
-                : pickerSelectStyles.inputAndroid
-            }
+            <Text style={{paddingVertical: windowHeight*0.01, fontFamily: 'Inter-Black', fontSize: windowHeight*0.021,}}>Nome de usuário.</Text>
+            <TextInput            
+              value={this.state.username}
+              onChangeText={this.handleUsernameChange}                
+              style={
+                Platform.OS === 'ios'
+                  ? pickerSelectStyles.inputIOS
+                  : pickerSelectStyles.inputAndroid
+                    }
           
-          />
+            />
 
            <Text style={{paddingVertical: windowHeight*0.01, fontFamily: 'Inter-Black', fontSize: windowHeight*0.021,}}>E-mail.</Text>
-          <TextInput
+           <TextInput           
+             value={this.state.email}
+             onChangeText={this.handleEmailChange}     
+             style={
+               Platform.OS === 'ios'
+                 ? pickerSelectStyles.inputIOS
+                 : pickerSelectStyles.inputAndroid
+                   }
             
-            value={this.state.email}
-            onChangeText={this.handleEmailChange}
-            
-            
-            style={
-              Platform.OS === 'ios'
-                ? pickerSelectStyles.inputIOS
-                : pickerSelectStyles.inputAndroid
-            }
-            
-          />
+           />
            <Text style={{paddingVertical: windowHeight*0.01, fontFamily: 'Inter-Black', fontSize: windowHeight*0.021,}}>Whatsapp.</Text>
-          <TextInput
-            placeholder="Ex: 5575991234455"
-            value={this.state.whatsapp}
-            onChangeText={this.handleWhatsappChange}
-                        
-            style={
-              Platform.OS === 'ios'
-                ? pickerSelectStyles.inputIOS
-                : pickerSelectStyles.inputAndroid
-            }
+           <TextInput
+             placeholder="Ex: 5575991234455"
+             value={this.state.whatsapp}
+             onChangeText={this.handleWhatsappChange}                        
+             style={
+               Platform.OS === 'ios'
+                 ? pickerSelectStyles.inputIOS
+                 : pickerSelectStyles.inputAndroid
+                   }
             
-          />
-
- 
+           />
 
          
 <View paddingVertical={2} />
