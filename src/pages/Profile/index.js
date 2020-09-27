@@ -160,7 +160,8 @@ export default class Profile extends React.Component {
                 return <Ionicons name="md-arrow-down" size={24} color="gray" />;
               }}
             /></View>})
-         };
+         }
+         
          if ( centrolojistico == 'Agro e PetShos') {
            this.setState({visual2: <View><View paddingVertical={2} />
 
@@ -386,11 +387,20 @@ export default class Profile extends React.Component {
   handletipolojaChange = (tipoloja) => {
     this.setState({ tipoloja });
     this.setState({visual: <View></View>})
+  
+    
+    if( tipoloja == "Bares e Restudantes"){
+      this.setState({centrolojistico: 'Bares e Restudantes'})
+      this.setState({grupo: '2'}) 
+      this.setState({visual: <View></View>})
+  
+    }
+
     if(tipoloja == 'Comércio') {
   this.setState({visual: <View><View paddingVertical={2} />
 
     <Text style={{paddingVertical: windowHeight*0.01, fontFamily: 'Inter-Black', fontSize: windowHeight*0.021,}}>Local</Text>
-    {/* and value defined */}
+    {/* and value defined  Bares e Restudantes */}
     <RNPickerSelect
       placeholder={{
                     label: 'Selecione o centro comercial',
@@ -434,7 +444,7 @@ export default class Profile extends React.Component {
           items={[{ label: 'Agronegócio e PetShops', value: 'Agro e PetShos'},
                   { label: 'Autos', value: 'Autos' },
                   { label: 'Casa e Construção', value: 'Casa e Construção' },
-                  { label: 'Manutenção em informática', value: 'Manutenção em informática' },
+                  { label: 'Manutenção e informática', value: 'Manutenção em informática' },
                   { label: 'Saúde e Beleza', value: 'Saúde e Beleza' },
                   { label: 'Serviços Diversos', value: 'Serviços Diversos' },
                   ]}
@@ -453,8 +463,9 @@ export default class Profile extends React.Component {
             return <Ionicons name="md-arrow-down" size={24} color="gray" />;
           }}
         /></View>})
+        
     }
-    console.log(tipoloja)
+    
   };
 
   handleBackToLoginPress = () => {
@@ -470,6 +481,7 @@ export default class Profile extends React.Component {
         this.state.grupo.length === 0 || 
         this.state.centrolojistico.length === 0
         ) {
+          console.log()
       this.setState({ error: 'Preencha todos os campos para continuar!' }, () => false);
     } else {
       try {
@@ -512,6 +524,10 @@ export default class Profile extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView
+        ref={ ( ref ) => this.scrollView = ref }
+          onContentSizeChange={ () => {        
+        this.scrollView.scrollToEnd( { animated: false } )
+    } }
           style={styles.scrollContainer}
           contentContainerStyle={styles.scrollContentContainer}>
           
@@ -577,13 +593,14 @@ export default class Profile extends React.Component {
 {/* and value defined */}
 <RNPickerSelect
   placeholder={{
-                label: 'Selecione Comercio ou Serviço:',
+                label: 'Selecione: Comercio, Serviço ou Bares e Restudantes:',
                 value: null,
                 color: '#203242',
                       }}
   value={this.state.tipoloja}                    
   items={[{ label: 'Comércio', value: "Comércio" },
           { label: 'Serviço', value: 'Serviço' },
+          { label: 'Bares e Restudantes', value: 'Bares e Restudantes' }
           ]}
   onValueChange={this.handletipolojaChange}
   style={{
@@ -605,7 +622,7 @@ export default class Profile extends React.Component {
 <View>{this.state.visual}</View>
 <View>{this.state.visual2}</View>
 
-<View>{this.state.visual3}</View>
+
 <Text>{this.state.error}</Text>
 <View style={{marginTop: windowWidth*0.03}}>
  
