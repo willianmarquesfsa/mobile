@@ -27,7 +27,7 @@ function counter(state, action) {
 function counter2(state, action) {
   
   if (typeof state === 'undefined') {
-    return 0 ;
+    return 0 ;expo
   }
   switch (action.type) {
     case 'INCREMENT2':
@@ -54,8 +54,7 @@ async function counter3(state, action) {
   }
   switch (action.type) {
     
-    case 'FOTO':
-      
+    case 'FOTO':      
       return state=value4;
     case 'FOTO2':
       return state=value2;

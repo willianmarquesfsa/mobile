@@ -21,20 +21,11 @@ import { AsyncStorage, Dimensions } from 'react-native';
 
 
 import styles from './pages/Incidents/styles'
-function sendWhatsapp() {
-  Linking.openURL(`http://acheifsa.com.umbler.net`);
-};
-
-
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-
-
-
-export default class MenuComponent extends React.Component {
-   
+export default class MenuComponent extends React.Component {   
   
     constructor(propsss) {
       super(propsss);
@@ -56,23 +47,16 @@ export default class MenuComponent extends React.Component {
                      username: '',
                      id:'',
                      id1: false,
-                      };
-                  
+                      };                  
   
-    }
-    
+    }    
   
     componentDidMount(){
       
-      this._retrieveData()
-      
-              
+      this._retrieveData()                   
     }
 
-    componentWillUnmount(){
-      this._retrieveData()
-    }
-    
+     
        
      _retrieveData = async () => {
        console.log("2806la"+this.props.count3)
@@ -80,8 +64,7 @@ export default class MenuComponent extends React.Component {
       try {
         const value = await AsyncStorage.getItem('ongId');
         const value2 = await AsyncStorage.getItem('FotoInsta');
-        const value3 = await AsyncStorage.getItem('Titulo');
-       
+        const value3 = await AsyncStorage.getItem('Titulo');       
         
         if (value !== null) {
           this.setState({ id: value}),
@@ -137,8 +120,7 @@ export default class MenuComponent extends React.Component {
                       source={this.props.count3._55.link ? {uri: this.props.count3._55.link}:null}/>
              <Text style={styles.instagram3} >{this.props.count3._55.titu}</Text>
                       </View>
-           )
-             
+           )            
        
       }
      
@@ -151,12 +133,10 @@ export default class MenuComponent extends React.Component {
           source={require('./assets/UserS.png')}></Image>
           <Text style={styles.instagram3}>Sem imagem</Text>
           </View>
-         )
-       
+         )       
       }
   
       if (this.props.count === 0){
-
         
          return (
            <View style={{flexDirection: 'row',  alignItems: 'center', alignContent: 'flex-start', justifyContent: 'flex-start', flex:1 }}> 
@@ -332,8 +312,7 @@ export default class MenuComponent extends React.Component {
           {this.state.item5 ? (
                
             
-  <AgroePetShops {...this.props} ></AgroePetShops>
-      
+  <AgroePetShops {...this.props} ></AgroePetShops>     
     
   )
                : null}
@@ -373,9 +352,7 @@ export default class MenuComponent extends React.Component {
           {this.state.item8 ? (
                <EducaçãoeTreinamentoss {...this.props}></EducaçãoeTreinamentoss>
             )
-               : null}
-  
-  
+               : null} 
       
   
       <ListItem icon onPress={() => this.setState({ item4: !this.state.item4 })}>
@@ -419,8 +396,7 @@ export default class MenuComponent extends React.Component {
    
     {this._listEmptyComponent()}
        
-          </DrawerContentScrollView>
-          
+          </DrawerContentScrollView>          
           
         </Container>
       )

@@ -19,6 +19,7 @@
     "expo-ads-admob": "~8.2.1",
     "expo-cli": "^3.22.3",
     "expo-constants": "~9.1.1",
+    "expo-device": "~2.2.1",
     "expo-font": "~8.2.1",
     "expo-google-sign-in": "~8.2.1",
     "expo-location": "~8.2.1",

@@ -223,8 +223,8 @@ centrolojistico: {
 
 
    instagram: {
-    width: Constants.statusBarHeight*3.4, 
-    height: Constants.statusBarHeight*3.4, 
+    width: Constants.statusBarHeight*2.4, 
+    height: Constants.statusBarHeight*2.4, 
     borderRadius: Constants.statusBarHeight*1.5,
     alignContent: 'center',
     //alignItems: 'center',

@@ -35,7 +35,7 @@
     },
     "android": {
       
-      "versionCode": 8,
+      "versionCode": 9,
       "package": "com.classificadosfsa.willianmarques",
       "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"],
       "config": {
